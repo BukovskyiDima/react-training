@@ -1,17 +1,42 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <div className="App">
+          <header id="header">
+            <div className="container">
+              <ul className="button-holder">
+                <li>
+                  <a href="#">
+                    Refresh
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Random
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Top
+                  </a>
+                </li>
+              </ul>
+              <form action="#">
+                <div className="input-holder">
+                  <input type="text"/>
+                </div>
+                <button>Go</button>
+              </form>
+            </div>
+          </header>
+          <main>
+
+          </main>
+        </div>
     );
   }
 }
