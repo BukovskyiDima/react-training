@@ -1,19 +1,14 @@
 import axios from 'axios';
 
-export const getTrendingGifs = function() {
-  let arr = [];
+export const getTrendingGifs = () => {
 
-  axios({
+  return axios({
     method: 'get',
     url: 'https://api.giphy.com/v1/gifs/trending?api_key=FipGdloXqHUVHcSHhtIBnhEmfJ89IvLv&limit=24&rating=G',
   })
     .then(
       (response) => {
-        console.log(arr + ' 1');
-        console.log(response.data.data);
-        arr = response.data.data;
-        console.log(arr + ' 2');
-        return arr;
+        return response.data.data;
       }
     );
 };

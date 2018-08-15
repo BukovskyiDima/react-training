@@ -3,20 +3,17 @@ import * as Api from '../../API';
 import Header from "../../Components/Header";
 
 
-export default class HomePage extends React.Component {
+export class Home extends React.Component {
 
-  constructor(props) {
-    super(props);
+  state = {
+    items: []
+  };
 
-    this.state = {
-      items: []
-    };
-  }
 
   componentDidMount() {
-    // this.setState({ items : Api.getTrendingGifs() });
-    console.log(this.state.items);
-    console.log(Api.getTrendingGifs())
+    let test = Api.getTrendingGifs();
+
+    console.log(test);
   }
 
   render() {
