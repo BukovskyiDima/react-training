@@ -1,0 +1,56 @@
+import * as React from 'react';
+import * as Api from '../../API';
+import Header from "../../Components/Header";
+
+
+export default class HomePage extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      items: []
+    };
+  }
+
+  componentDidMount() {
+    // this.setState({ items : Api.getTrendingGifs() });
+    console.log(this.state.items);
+    console.log(Api.getTrendingGifs())
+  }
+
+  render() {
+    let {items} = this.state;
+    return (
+      <div>
+        <Header />
+        <main>
+          <div className="container">
+            <form action="#" className="form-holder">
+              <div className="input-holder">
+                <input type="text"/>
+              </div>
+              <button
+                  className="btn"
+                  onClick={Api.getSearchedGifs}
+              >
+                Go
+              </button>
+            </form>
+          </div>
+          <div className="container">
+            <div className="item-holder">
+              {items.map(item => (
+                  <div className="item" key={item.id}>
+                    <img src={item.images.original.url}/>
+                    <span>{item.title}</span>
+                  </div>
+              ))}
+            </div>
+          </div>
+        </main>
+      </div>
+    )
+  }
+}
+

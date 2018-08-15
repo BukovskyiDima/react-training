@@ -87,6 +87,10 @@ img {
   margin-bottom: 15px;
 }
 
+.form-holder {
+  margin-bottom: 25px;
+}
+
 @media (max-width: 480px) {
   .item {
     width: 100%;
