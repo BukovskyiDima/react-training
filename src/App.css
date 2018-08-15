@@ -87,6 +87,12 @@ img {
   margin-bottom: 15px;
 }
 
+@media (max-width: 480px) {
+  .item {
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   #header .container {
     flex-wrap: wrap;
@@ -94,5 +100,9 @@ img {
 
   .button-holder {
     margin-bottom: 20px;
+  }
+
+  .item {
+    width: 50%;
   }
 }
