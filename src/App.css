@@ -1,5 +1,15 @@
+html * {
+  box-sizing: border-box;
+}
+
 body {
   color: #333;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: top;
 }
 
 .container {
@@ -10,6 +20,8 @@ body {
 
 #header {
   padding: 20px;
+  background-color: #f3f3f3;
+  margin-bottom: 25px;
 }
 
 #header .container {
@@ -25,7 +37,7 @@ body {
   align-items: center;
 }
 
-.button-holder a {
+.btn {
   transition: background-color 300ms ease-out, border 300ms ease-out, color 300ms ease-out;
   background-color: transparent;
   color: inherit;
@@ -34,9 +46,10 @@ body {
   padding: 10px 20px;
   border: 1px solid #333;
   margin: 0 15px 0 0;
+  cursor: pointer;
 }
 
-.button-holder a:hover {
+.btn:hover {
   border: 1px solid #fff;
   color: #fff;
   background-color: #333;
@@ -54,7 +67,24 @@ form {
 
 input {
   padding: 10px 14px;
-  width: calc(100% - 31px);
+  width: 100%;
+}
+
+.item-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -10px;
+}
+
+.item {
+  width: 33%;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+img {
+  margin-bottom: 15px;
 }
 
 @media (max-width: 768px) {
