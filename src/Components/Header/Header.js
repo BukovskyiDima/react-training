@@ -1,7 +1,13 @@
 import * as React from 'react';
-import * as Api from '../../API';
 
 export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  changePage = (e) => {
+    this.props.switchPages(e.target.text);
+  };
 
   render(){
     return (
@@ -11,18 +17,17 @@ export default class Header extends React.Component {
             <li>
               <a
                   className="btn"
-                  href="#"
-                  onClick={Api.getRandomGifs}
+                  onClick={ this.changePage }
               >
-                Random
+                Home
               </a>
             </li>
             <li>
               <a
                   className="btn"
-                  href="../../Pages/Home"
+                  onClick={ this.changePage }
               >
-                Home
+                Random
               </a>
             </li>
           </ul>

@@ -1,16 +1,25 @@
 import * as  React from 'react';
 import './App.css';
-import HomePage from './Pages/Home';
+import { Home, Random } from './Pages';
+import Header from './Components/Header';
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
+  state = {
+    page: 'Home'
+  };
+
+  switchPages = (value) => {
+    this.setState({ page: value });
+    console.log(value)
+  };
 
   render() {
+    let { page } = this.state;
     return (
       <div className="App">
-        <HomePage/>
+        <Header page={page} switchPages={this.switchPages} />
+        { page === 'Home' ? <Home/> : <Random /> }
       </div>
     );
   }
