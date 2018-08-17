@@ -4,9 +4,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import * as Page from '../../Pages';
+import * as Page from './Pages/index';
 
-export default class Header extends React.Component {
+export default class Main extends React.Component {
 
   render(){
     return (

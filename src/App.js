@@ -1,13 +1,13 @@
 import * as  React from 'react';
 import './App.scss';
-import Header from './Components/Header';
+import Main from './Main';
 
 export default class App extends React.Component {
 
   render() {
     return (
       <div className="App">
-        <Header/>
+        <Main/>
       </div>
     );
   }
