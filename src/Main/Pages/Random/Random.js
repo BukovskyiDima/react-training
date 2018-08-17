@@ -1,5 +1,4 @@
 import * as React from 'react';
-import api from '../../../serves/api';
 import { GifsHolder } from '../../../Components/index'
 
 export default class Random extends React.Component {

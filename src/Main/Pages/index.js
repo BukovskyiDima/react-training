@@ -1,5 +1,5 @@
-import Home from './Home/index';
-import Random from './Random/index';
+import Home from './Home/Home';
+import Random from './Random/Random';
 
 export {
 	Home,

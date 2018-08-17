@@ -1,36 +1,39 @@
 import * as React from 'react';
-import api from '../../../serves/api';
-import { GifsHolder } from '../../../Components/index'
+import { GifsHolder } from '../../../Components/index';
+import { connect } from "react-redux";
+import { getGifs } from "../../../action";
 
-export default class Home extends React.Component {
 
-  state = {
-    items: []
-  };
+class Home extends React.Component {
+	componentDidMount() {
+		getGifs(this.props.dispatch);
+	}
 
-  render() {
-    let {items} = this.state;
-
-    return (
-      <main>
-        <div className="container">
-          <form action="#" className="form-holder">
-            <div className="input-holder">
-              <input type="text"/>
-            </div>
-            <button
-              className="btn"
-              onClick={api.search}
-            >
-              Go
-            </button>
-          </form>
-        </div>
-        <div className="container">
-          <GifsHolder items={items}/>
-        </div>
-      </main>
-    )
-  }
+	render() {
+		return (
+			<main>
+				<div className="container">
+					<form action="#" className="form-holder">
+						<div className="input-holder">
+							<input type="text"/>
+						</div>
+						<button
+							type="button"
+							className="btn"
+							onClick={()=> getGifs(this.props.dispatch)}
+						>
+							Go
+						</button>
+					</form>
+				</div>
+				<div className="container">
+					<GifsHolder items={this.props.gifs}/>
+				</div>
+			</main>
+		)
+	}
 }
 
+export default connect((state) => ({
+	gifs: state.gifs
+}))(Home);
