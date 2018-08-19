@@ -1,8 +1,9 @@
-import api from "../serves/api";
+import api from "../../service/api";
 
 export const GIF_REQUEST = 'GIF_REQUEST';
 export const GIF_REQUEST_SUCCESS = 'GIF_REQUEST_SUCCESS';
 export const GIF_REQUEST_FAILED = 'GIF_REQUEST_FAILED';
+export const GIF_SEARCH_REQUEST = 'GIF_SEARCH_REQUEST';
 
 const gifRequest = () => ({
 	type: GIF_REQUEST,
@@ -21,6 +22,10 @@ const gifRequestError = (error) => ({
 	error,
 });
 
+const gifSearchRequest = () => ({
+	type: GIF_SEARCH_REQUEST,
+	isFetching: false
+});
 
 export const getGifs = (dispatch) => {
 	dispatch(gifRequest());

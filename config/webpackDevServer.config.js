@@ -20,7 +20,7 @@ module.exports = function(proxy, allowedHost) {
     // https://github.com/facebookincubator/create-react-app/issues/2271
     // https://github.com/facebookincubator/create-react-app/issues/2233
     // While we're investigating better solutions, for now we will take a
-    // compromise. Since our WDS configuration only serves files in the `public`
+    // compromise. Since our WDS configuration only service files in the `public`
     // folder we won't consider accessing them a vulnerability. However, if you
     // use the `proxy` feature, it gets more dangerous because it can expose
     // remote code execution vulnerabilities in backends like Django and Rails.
@@ -34,8 +34,8 @@ module.exports = function(proxy, allowedHost) {
     // Silence WebpackDevServer's own logs since they're generally not useful.
     // It will still show compile warnings and errors with this setting.
     clientLogLevel: 'none',
-    // By default WebpackDevServer serves physical files from current directory
-    // in addition to all the virtual build products that it serves from memory.
+    // By default WebpackDevServer service physical files from current directory
+    // in addition to all the virtual build products that it service from memory.
     // This is confusing because those files won’t automatically be available in
     // production build folder unless we copy them. However, copying the whole
     // project directory is dangerous because we may expose sensitive files.

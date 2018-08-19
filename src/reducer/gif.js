@@ -2,7 +2,7 @@ import {
 	GIF_REQUEST_FAILED,
 	GIF_REQUEST,
 	GIF_REQUEST_SUCCESS
-} from "../action/";
+} from "../Main/Pages/Home/action/";
 
 export function gifs(state = [], action) {
 	switch (action.type) {

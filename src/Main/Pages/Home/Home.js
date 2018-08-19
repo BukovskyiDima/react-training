@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index';
 import { connect } from "react-redux";
-import { getGifs } from "../../../action";
+import { getGifs } from "./action";
 
 
 class Home extends React.Component {
