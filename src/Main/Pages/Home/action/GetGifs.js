@@ -24,7 +24,7 @@ const gifRequestError = (error) => ({
 
 const gifSearchRequest = () => ({
 	type: GIF_SEARCH_REQUEST,
-	isFetching: false
+	isFetching: false,
 });
 
 export const getGifs = (dispatch) => {
@@ -33,3 +33,10 @@ export const getGifs = (dispatch) => {
 		.then(response => dispatch(gifRequestSuccess(response.data.data)))
 		.catch(error => dispatch(gifRequestError(error)));
 };
+
+export const getSearchGifs = (dispatch, parameter) => {
+	dispatch(gifSearchRequest(parameter));
+	api.search(parameter)
+		.then(response => dispatch(gifSearchRequest(response.data.data)))
+		.catch(error => dispatch(gifRequestError(error)));
+}

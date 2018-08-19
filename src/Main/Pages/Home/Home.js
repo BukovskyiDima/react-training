@@ -1,26 +1,35 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index';
 import { connect } from "react-redux";
-import { getGifs } from "./action";
+import { getGifs, getSearchGifs } from "./action";
 
 
 class Home extends React.Component {
+	state = {
+		value: ''
+	};
+
 	componentDidMount() {
 		getGifs(this.props.dispatch);
+	};
+
+	getNewValue = (event) => {
+		this.setState.value = event.target.value;
 	}
 
 	render() {
+		let { value } = this.state;
+
 		return (
 			<main>
 				<div className="container">
 					<form action="#" className="form-holder">
 						<div className="input-holder">
-							<input type="text"/>
+							<input type="text" onChange={this.getNewValue}/>
 						</div>
 						<button
 							type="button"
 							className="btn"
-							onClick={()=> getGifs(this.props.dispatch)}
 						>
 							Go
 						</button>
