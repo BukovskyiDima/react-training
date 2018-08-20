@@ -51,6 +51,6 @@ class Home extends React.Component {
 }
 
 export default connect((state) => ({
-	gifs: state.gifs,
+	gifs: state.home.gifs,
 	value: state.value
 }))(Home);

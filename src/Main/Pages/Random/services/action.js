@@ -1,8 +1,8 @@
 import api from '../../../../service/api';
 
-export const GIF_RANDOM_REQUEST = 'GIF_REQUEST';
-export const GIF_RANDOM_REQUEST_SUCCESS = 'GIF_REQUEST_SUCCESS';
-export const GIF_RANDOM_REQUEST_FAILED = 'GIF_REQUEST_FAILED';
+export const GIF_RANDOM_REQUEST = 'GIF_RANDOM_REQUEST';
+export const GIF_RANDOM_REQUEST_SUCCESS = 'GIF_RANDOM_REQUEST_SUCCESS';
+export const GIF_RANDOM_REQUEST_FAILED = 'GIF_RANDOM_REQUEST_FAILED';
 
 const randomGifRequest = () => ({
     type: GIF_RANDOM_REQUEST,

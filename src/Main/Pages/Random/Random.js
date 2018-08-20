@@ -6,7 +6,7 @@ import { action } from "./services";
 class Random extends React.Component {
 
 	componentDidMount() {
-        action(this.props.dispatch);
+		action(this.props.dispatch);
 	};
 
 	render() {
@@ -27,5 +27,5 @@ class Random extends React.Component {
 }
 
 export default connect((state) => ({
-    gifs: state.gifs
+	gifs: state.random.gifs
 }))(Random);
