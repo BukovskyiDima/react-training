@@ -1,9 +1,15 @@
 import * as React from 'react';
 import {
-	Link
+	Link,
+	withRouter
 } from "react-router-dom";
 
-export default class Header extends React.Component {
+class Header extends React.Component {
+
+	componentDidUpdate() {
+		console.log(this.props.location.pathname)
+	}
+
 
 	render() {
 		return (
@@ -12,7 +18,7 @@ export default class Header extends React.Component {
 					<ul className="button-holder">
 						<li>
 							<Link
-								className="btn"
+								className={ "btn" + (this.props.location.pathname === '/' ? ' active' : '')}
 								to="/"
 							>
 								Home
@@ -20,7 +26,7 @@ export default class Header extends React.Component {
 						</li>
 						<li>
 							<Link
-								className="btn"
+								className={ "btn" + (this.props.location.pathname === '/random' ? ' active' : '')}
 								to="/random"
 							>
 								Random
@@ -32,3 +38,5 @@ export default class Header extends React.Component {
 		)
 	}
 }
+
+export default withRouter(props => <Header {...props}/>)

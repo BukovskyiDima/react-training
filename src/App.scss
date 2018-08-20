@@ -52,10 +52,15 @@ img {
 	margin: 0 15px 0 0;
 	cursor: pointer;
 
-	&:hover {
+	&:hover,
+	&.active {
 		border: 1px solid #fff;
 		color: #fff;
 		background-color: #333;
+	}
+
+	&.active {
+		cursor: default;
 	}
 
 	&.next {

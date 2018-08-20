@@ -1,35 +1,31 @@
 import axios from 'axios';
 
 const API_KEY = 'zW3QkmvOf9ivEjRrXElFxe0C4KFd3zfO';
-const RANDOM_URL = 'https://api.giphy.com/v1/gifs/random';
-const TRENDING_URL = 'https://api.giphy.com/v1/gifs/trending';
-const SEARCH_URL = 'https://api.giphy.com/v1/gifs/search';
+const URL = 'https://api.giphy.com/v1/gifs';
 
 const api = {
 
-  trending: () => {
-    return axios({
-      method: 'get',
-      url: `${TRENDING_URL}?api_key=${API_KEY}&limit=24`,
-    })
-  },
+	trending: () => {
+		return axios({
+			method: 'get',
+			url: `${URL}/trending?api_key=${API_KEY}&limit=24`,
+		})
+	},
 
-  search: (value) => {
+	search: (value) => {
 
-    let parameter = value;
+		return axios({
+			method: 'get',
+			url: `${URL}/search?q=${value}&api_key=${API_KEY}&limit=24`,
+		})
+	},
 
-    return axios({
-      method: 'get',
-      url: `${SEARCH_URL}?q=${parameter}&api_key=${API_KEY}&limit=24`,
-    })
-  },
-
-  random: () => {
-    return axios({
-      method: 'get',
-      url: `${RANDOM_URL}?api_key=${API_KEY}`,
-    })
-  },
+	random: () => {
+		return axios({
+			method: 'get',
+			url: `${URL}/random?api_key=${API_KEY}`,
+		})
+	},
 };
 
 export default api;
