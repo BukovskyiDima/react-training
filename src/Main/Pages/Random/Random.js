@@ -1,22 +1,25 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index'
+import connect from "react-redux/es/connect/connect";
+import { getRandom } from "./action";
 
-export default class Random extends React.Component {
+class Random extends React.Component {
 
-	state = {
-		items: []
+	componentDidMount() {
+        getRandom(this.props.dispatch);
 	};
 
 	render() {
-		let {items} = this.state;
-
 		return (
 			<main>
 				<div className="container">
-					<GifsHolder items={items}/>
+					<GifsHolder items={this.props.gifs}/>
 				</div>
 			</main>
 		)
 	}
 }
 
+export default connect((state) => ({
+    gifs: state.gifs
+}))(Random);

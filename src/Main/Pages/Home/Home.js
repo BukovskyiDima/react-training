@@ -5,21 +5,17 @@ import { getGifs, getSearchGifs } from "./action";
 
 
 class Home extends React.Component {
-	state = {
-		value: ''
-	};
 
 	componentDidMount() {
 		getGifs(this.props.dispatch);
 	};
 
-	getNewValue = (event) => {
-		this.setState.value = event.target.value;
+	getNewValue = (e) => {
+		console.log(e.target.value);
+		getSearchGifs(this.props.dispatch, e.target.value)
 	}
 
 	render() {
-		let { value } = this.state;
-
 		return (
 			<main>
 				<div className="container">
@@ -44,5 +40,6 @@ class Home extends React.Component {
 }
 
 export default connect((state) => ({
-	gifs: state.gifs
+	gifs: state.gifs,
+	value: state.value
 }))(Home);

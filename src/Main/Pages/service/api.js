@@ -12,11 +12,6 @@ const api = {
       method: 'get',
       url: TRENDING_URL + `?api_key=`+ API_KEY +`&limit=24`,
     })
-      // .then(
-      //   (response) => {
-      //     return response.data.data;
-      //   }
-      // );
   },
 
   search: (value) => {
@@ -25,28 +20,15 @@ const api = {
 
     return axios({
       method: 'get',
-      url: SEARCH_URL + `q=` + parameter + `&api_key=`+ API_KEY +`&limit=24`,
+      url: SEARCH_URL + `?q=` + parameter + `&api_key=`+ API_KEY +`&limit=24`,
     })
-      // .then(
-      //   (response) => {
-      //     return response.data.data;
-      //   }
-      // )
   },
 
   random: () => {
-    let arr = [];
-
     return axios({
       method: 'get',
-      url: RANDOM_URL + `?api_key=`+ API_KEY +`&limit=24`,
+      url: RANDOM_URL + `?api_key=`+ API_KEY,
     })
-      // .then(
-      //   (response) => {
-      //     arr.push(response.data.data);
-      //     return arr;
-      //   }
-      // )
   },
 };
 

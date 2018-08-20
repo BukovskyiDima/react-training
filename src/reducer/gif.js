@@ -1,7 +1,8 @@
 import {
 	GIF_REQUEST_FAILED,
 	GIF_REQUEST,
-	GIF_REQUEST_SUCCESS
+	GIF_REQUEST_SUCCESS,
+	GIF_REQUEST_SEARCH
 } from "../Main/Pages/Home/action/";
 
 export function gifs(state = [], action) {
@@ -12,11 +13,12 @@ export function gifs(state = [], action) {
 }
 
 export function isGifsFetching(state = false, action) {
-	switch (action.type) {
-		case GIF_REQUEST_SUCCESS:
-		case GIF_REQUEST:
-		case GIF_REQUEST_FAILED:
-			return action.isFetching;
-		default: return state
-	}
+    switch (action.type) {
+        case GIF_REQUEST:
+        case GIF_REQUEST_SUCCESS:
+        case GIF_REQUEST_FAILED:
+        case GIF_REQUEST_SEARCH:
+            return action.isFetching;
+        default: return state
+    }
 }
