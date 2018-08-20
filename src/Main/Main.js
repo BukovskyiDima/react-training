@@ -5,17 +5,18 @@ import {
 } from "react-router-dom";
 import * as Page from './Pages/index';
 import Header from '../Components/Header/Header';
+import {Fragment} from "react";
 
 export default class Main extends React.Component {
 
 	render() {
 		return (
 			<Router>
-				<div id="wrapper">
+				<Fragment>
 					<Header />
 					<Route exact path="/" component={Page.Home}/>
 					<Route path="/random" component={Page.Random}/>
-				</div>
+				</Fragment>
 			</Router>
 		)
 	}

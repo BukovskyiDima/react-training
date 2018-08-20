@@ -10,7 +10,7 @@ const api = {
   trending: () => {
     return axios({
       method: 'get',
-      url: TRENDING_URL + `?api_key=`+ API_KEY +`&limit=24`,
+      url: `${TRENDING_URL}?api_key=${API_KEY}&limit=24`,
     })
   },
 
@@ -20,14 +20,14 @@ const api = {
 
     return axios({
       method: 'get',
-      url: SEARCH_URL + `?q=` + parameter + `&api_key=`+ API_KEY +`&limit=24`,
+      url: `${SEARCH_URL}?q=${parameter}&api_key=${API_KEY}&limit=24`,
     })
   },
 
   random: () => {
     return axios({
       method: 'get',
-      url: RANDOM_URL + `?api_key=`+ API_KEY,
+      url: `${RANDOM_URL}?api_key=${API_KEY}`,
     })
   },
 };

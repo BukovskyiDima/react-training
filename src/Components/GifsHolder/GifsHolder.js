@@ -3,10 +3,6 @@ import GifItem from '../GifItem/GifItem';
 
 
 export default class GifsHolder extends React.Component {
-	constructor(props) {
-		super(props)
-	};
-
 	render(){
 		return (
 			<div className="item-holder">
