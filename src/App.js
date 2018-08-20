@@ -11,9 +11,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<div className="App">
-					<Main/>
-				</div>
+                <Main/>
 			</Provider>
 		);
 	}

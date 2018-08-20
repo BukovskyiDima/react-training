@@ -6,6 +6,8 @@ import { getRandom } from "./action";
 class Random extends React.Component {
 
 	componentDidMount() {
+		console.log("random")
+		console.log(this.props)
         getRandom(this.props.dispatch);
 	};
 
@@ -13,13 +15,14 @@ class Random extends React.Component {
 		return (
 			<main>
 				<div className="container">
-					<GifsHolder items={this.props.gifs}/>
+					{/*<GifsHolder items={this.props.gifs}/>*/}
 				</div>
+                <p>you see this page </p>
 			</main>
 		)
 	}
 }
 
 export default connect((state) => ({
-    gifs: state.gifs
+    random: state.random
 }))(Random);

@@ -7,6 +7,7 @@ import { getGifs, getSearchGifs } from "./action";
 class Home extends React.Component {
 
 	componentDidMount() {
+		console.log(this.props)
 		getGifs(this.props.dispatch);
 	};
 
@@ -21,14 +22,14 @@ class Home extends React.Component {
 				<div className="container">
 					<form action="#" className="form-holder">
 						<div className="input-holder">
-							<input type="text" onChange={this.getNewValue}/>
+							<input type="text" placeholder="Type here... " onChange={this.getNewValue}/>
 						</div>
-						<button
-							type="button"
-							className="btn"
-						>
-							Go
-						</button>
+						{/*<button*/}
+							{/*type="button"*/}
+							{/*className="btn"*/}
+						{/*>*/}
+							{/*Go*/}
+						{/*</button>*/}
 					</form>
 				</div>
 				<div className="container">

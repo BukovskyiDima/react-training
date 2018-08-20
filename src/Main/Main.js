@@ -11,10 +11,10 @@ export default class Main extends React.Component {
 	render() {
 		return (
 			<Router>
-				<div>
+				<div id="wrapper">
 					<Header />
 					<Route exact path="/" component={Page.Home}/>
-					<Route path="/about" component={Page.Random}/>
+					<Route path="/random" component={Page.Random}/>
 				</div>
 			</Router>
 		)
