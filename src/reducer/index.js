@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import { gifs, isGifsFetching } from "./gif";
+import * as homeReducer from '../Main/Pages/Home/services/reducer';
+import * as randomReducer from '../Main/Pages/Random/services/reducer';
 
 
 export default combineReducers({
-	gifs,
-	isGifsFetching
+	homeReducer,
+	randomReducer
 })

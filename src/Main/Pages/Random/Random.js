@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index'
 import connect from "react-redux/es/connect/connect";
-import { getRandom } from "./action";
+import { action } from "./services";
 
 class Random extends React.Component {
 
 	componentDidMount() {
-        getRandom(this.props.dispatch);
+        action(this.props.dispatch);
 	};
 
 	render() {
@@ -15,7 +15,7 @@ class Random extends React.Component {
 				<div className="container">
 					<button
 						className="btn next"
-						onClick={() => getRandom(this.props.dispatch)}
+						onClick={() => action(this.props.dispatch)}
 					>
 						Next
 					</button>

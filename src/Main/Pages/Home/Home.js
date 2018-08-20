@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index';
 import { connect } from "react-redux";
-import { getGifs, getSearchGifs } from "./action";
+import { action, getSearchGifs } from "./services";
 
 
 class Home extends React.Component {
@@ -11,7 +11,7 @@ class Home extends React.Component {
 	}
 
 	componentDidMount() {
-		getGifs(this.props.dispatch);
+		action(this.props.dispatch);
 	};
 
 	handleValueChange = (e) => {

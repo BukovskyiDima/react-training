@@ -1,4 +1,4 @@
-import api from '../../service/api';
+import api from '../../../../service/api';
 
 export const GIF_RANDOM_REQUEST = 'GIF_REQUEST';
 export const GIF_RANDOM_REQUEST_SUCCESS = 'GIF_REQUEST_SUCCESS';
@@ -21,7 +21,7 @@ const randomGifRequestError = (error) => ({
     error,
 });
 
-export const getRandom = (dispatch) => {
+export const action = (dispatch) => {
     dispatch(randomGifRequest());
     api.random()
         .then(response => dispatch(randomGifRequestSuccess([response.data.data])))

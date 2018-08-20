@@ -1,5 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 import GifItem from '../GifItem/GifItem';
+import PropTypes from 'prop-types';
 
 
 export default class GifsHolder extends React.Component {
@@ -12,4 +13,9 @@ export default class GifsHolder extends React.Component {
 			</div>
 		)
 	}
+}
+
+GifsHolder.propTypes = {
+	item: PropTypes.object,
+	id: PropTypes.string
 }

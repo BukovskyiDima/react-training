@@ -1,4 +1,4 @@
-import api from '../../service/api';
+import api from '../../../../service/api';
 
 export const GIF_REQUEST = 'GIF_REQUEST';
 export const GIF_REQUEST_SUCCESS = 'GIF_REQUEST_SUCCESS';
@@ -27,7 +27,7 @@ const gifRequestError = (error) => ({
 	error,
 });
 
-export const getGifs = (dispatch) => {
+export const action = (dispatch) => {
 	dispatch(gifRequest());
 	api.trending()
 		.then(response => dispatch(gifRequestSuccess(response.data.data)))
