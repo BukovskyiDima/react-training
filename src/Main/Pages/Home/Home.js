@@ -6,30 +6,41 @@ import { getGifs, getSearchGifs } from "./action";
 
 class Home extends React.Component {
 
+	state = {
+		value: ''
+	}
+
 	componentDidMount() {
 		console.log(this.props)
 		getGifs(this.props.dispatch);
 	};
 
-	getNewValue = (e) => {
-		console.log(e.target.value);
-		getSearchGifs(this.props.dispatch, e.target.value)
+	handleValueChange = (e) => {
+		this.setState({
+			value: e.target.value
+		})
+		// getSearchGifs(this.props.dispatch, e.target.value)
+	}
+
+	formSubmit = (e) => {
+		e.preventDefault();
+
+		getSearchGifs(this.props.dispatch, this.state.value)
 	}
 
 	render() {
 		return (
 			<main>
 				<div className="container">
-					<form action="#" className="form-holder">
+					<form onSubmit={this.formSubmit} className="form-holder">
 						<div className="input-holder">
-							<input type="text" placeholder="Type here... " onChange={this.getNewValue}/>
+							<input type="text" placeholder="Type here... " value={this.state.value} onChange={this.handleValueChange}/>
 						</div>
-						{/*<button*/}
-							{/*type="button"*/}
-							{/*className="btn"*/}
-						{/*>*/}
-							{/*Go*/}
-						{/*</button>*/}
+						<button
+							className="btn"
+						>
+							Go
+						</button>
 					</form>
 				</div>
 				<div className="container">

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'FipGdloXqHUVHcSHhtIBnhEmfJ89IvLv';
+const API_KEY = 'zW3QkmvOf9ivEjRrXElFxe0C4KFd3zfO';
 const RANDOM_URL = 'https://api.giphy.com/v1/gifs/random';
 const TRENDING_URL = 'https://api.giphy.com/v1/gifs/trending';
 const SEARCH_URL = 'https://api.giphy.com/v1/gifs/search';

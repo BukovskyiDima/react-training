@@ -24,6 +24,6 @@ const randomGifRequestError = (error) => ({
 export const getRandom = (dispatch) => {
     dispatch(randomGifRequest());
     api.random()
-        .then(response => dispatch(randomGifRequestSuccess(response.data.data)))
+        .then(response => dispatch(randomGifRequestSuccess([response.data.data])))
         .catch(error => dispatch(randomGifRequestError(error)));
 };

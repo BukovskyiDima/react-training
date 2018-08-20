@@ -15,14 +15,18 @@ class Random extends React.Component {
 		return (
 			<main>
 				<div className="container">
-					{/*<GifsHolder items={this.props.gifs}/>*/}
+					<GifsHolder items={this.props.gifs}/>
+					<button
+						onClick={() => getRandom(this.props.dispatch)}
+					>
+						Next
+					</button>
 				</div>
-                <p>you see this page </p>
 			</main>
 		)
 	}
 }
 
 export default connect((state) => ({
-    random: state.random
+    gifs: state.gifs
 }))(Random);
