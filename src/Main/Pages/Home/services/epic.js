@@ -1,10 +1,13 @@
-import { GIF_REQUEST, GIF_REQUEST_SEARCH, gifRequestError, gifRequestSuccess } from "./action";
+import {
+	GIF_REQUEST,
+	GIF_REQUEST_SEARCH,
+	gifRequestError,
+	gifRequestSuccess
+} from "./action";
 import api from '../../../../service/api';
 import { from } from "rxjs";
 import { catchError, map, mergeMap } from "rxjs/operators";
-
 import { combineEpics, ofType } from "redux-observable";
-
 
 const getGifsEpic = action$ => action$.pipe(
 	ofType(GIF_REQUEST),

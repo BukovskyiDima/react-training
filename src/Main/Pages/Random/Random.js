@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index'
-import connect from "react-redux/es/connect/connect";
-import { getRandomGif } from "./services";
+import { connect } from "react-redux";
+import {
+	randomGifRequest
+} from "./services";
 
 class Random extends React.Component {
 
@@ -34,4 +36,4 @@ const mapStateToProps = (state) => ({
 	items: state.random.items
 });
 
-export default connect(mapStateToProps, {getRandomGif})(Random);
+export default connect(mapStateToProps, {getRandomGif: randomGifRequest})(Random);

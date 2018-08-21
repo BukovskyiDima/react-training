@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index';
 import { connect } from "react-redux";
-import { getGif, getGifByQuery, handleSearchRequestQuery } from "./services";
-
+import {
+	getGif,
+	getGifByQuery,
+	handleSearchRequestQuery
+} from "./services";
 
 export class Home extends React.Component {
 
@@ -11,8 +14,7 @@ export class Home extends React.Component {
 	};
 
 	handleValueChange = (e) => {
-		this.props.handleSearchRequestQuery(e.target.value)
-		// getSearchGifs(this.props.dispatch, e.target.value)
+		this.props.handleSearchRequestQuery(e.target.value);
 	};
 
 	formSubmit = (e) => {
