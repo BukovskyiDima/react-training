@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index';
 import { connect } from "react-redux";
-import { getGifs, getSearchGifs, handleSearchRequestQuery } from "./services";
+import { getGif, getGifByQuery, handleSearchRequestQuery } from "./services";
+
 
 export class Home extends React.Component {
 
 	componentDidMount() {
-		this.props.getGifs();
+		this.props.gifRequest();
 	};
 
 	handleValueChange = (e) => {
@@ -19,8 +20,8 @@ export class Home extends React.Component {
 
 		const value = this.props.query;
 		value !== ''
-			? this.props.getSearchGifs()
-			: this.props.getGifs()
+			? this.props.gifSearchRequest()
+			: this.props.gifRequest()
 	};
 
 	render() {
@@ -66,4 +67,4 @@ const mapStateToProps = (state) => ({
 	query: state.home.query,
 });
 
-export default connect(mapStateToProps, {getGifs, getSearchGifs, handleSearchRequestQuery})(Home);
+export default connect(mapStateToProps, {gifRequest: getGif, gifSearchRequest: getGifByQuery, handleSearchRequestQuery})(Home);
