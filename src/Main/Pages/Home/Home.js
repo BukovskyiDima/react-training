@@ -1,39 +1,37 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index';
 import { connect } from "react-redux";
-import { action, getSearchGifs } from "./services";
+import { getGifs, getSearchGifs, handleSearchRequestQuery } from "./services";
 
-
-class Home extends React.Component {
-
-	state = {
-		value: ''
-	}
+export class Home extends React.Component {
 
 	componentDidMount() {
-		action(this.props.dispatch);
+		this.props.getGifs();
 	};
 
 	handleValueChange = (e) => {
-		this.setState({
-			value: e.target.value
-		})
+		this.props.handleSearchRequestQuery(e.target.value)
 		// getSearchGifs(this.props.dispatch, e.target.value)
-	}
+	};
 
 	formSubmit = (e) => {
 		e.preventDefault();
 
-		getSearchGifs(this.props.dispatch, this.state.value)
-	}
+		const value = this.props.value;
+		value !== ''
+			? this.props.getSearchGifs()
+			: this.props.getGifs()
+	};
 
 	render() {
+
 		return (
 			<main>
 				<div className="container">
 					<form onSubmit={this.formSubmit} className="form-holder">
 						<div className="input-holder">
-							<input type="text" placeholder="Type here... " value={this.state.value} onChange={this.handleValueChange}/>
+							<input type="text" placeholder="Type here... " value={this.props.query}
+							       onChange={this.handleValueChange}/>
 						</div>
 						<button
 							className="btn"
@@ -43,14 +41,33 @@ class Home extends React.Component {
 					</form>
 				</div>
 				<div className="container">
-					<GifsHolder items={this.props.gifs}/>
+					<GifsHolder items={this.props.items}/>
 				</div>
 			</main>
 		)
 	}
 }
 
-export default connect((state) => ({
-	gifs: state.home.gifs,
-	value: state.value
-}))(Home);
+const mapStateToProps = (state) => ({
+	items: state.home.items,
+	query: state.home.query,
+});
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getGifs: () => getGifs(dispatch),
+		getSearchGifs: (query) => getSearchGifs(dispatch, query),
+		handleSearchRequestQuery: (query) => dispatch(handleSearchRequestQuery(query))
+	};
+};
+
+const mergeProps = (stateProps, dispatchProps) => {
+	const getSearchGifs = () => dispatchProps.getSearchGifs(stateProps.query);
+	return {
+		...stateProps,
+		...dispatchProps,
+		getSearchGifs
+	}
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Home);

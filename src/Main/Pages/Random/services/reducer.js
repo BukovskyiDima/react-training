@@ -1,11 +1,8 @@
 import {
     GIF_RANDOM_REQUEST,
     GIF_RANDOM_REQUEST_FAILED,
-    GIF_RANDOM_REQUEST_SUCCESS,
-    randomGifRequest,
-    randomGifRequestError,
-    randomGifRequestSuccess
-} from "action";
+    GIF_RANDOM_REQUEST_SUCCESS
+} from "./action";
 
 
 const defaultState = {
@@ -37,8 +34,6 @@ export const randomReducer = (state = defaultState, action) => {
             };
 
         default:
-            return {
-                ...state
-            }
+            return state
     }
-}
+};

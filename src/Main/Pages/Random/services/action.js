@@ -24,7 +24,7 @@ export const randomGifRequestError = (error) => {
     }
 };
 
-export const action = (dispatch) => {
+export const getRandomGif = (dispatch) => {
     dispatch(randomGifRequest());
     api.random()
         .then(response => dispatch(randomGifRequestSuccess([response.data.data])))

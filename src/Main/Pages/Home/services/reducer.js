@@ -2,14 +2,16 @@ import {
     GIF_REQUEST,
     GIF_REQUEST_FAILED,
     GIF_REQUEST_SEARCH,
-    GIF_REQUEST_SUCCESS
-} from "action";
+    GIF_REQUEST_SUCCESS,
+    GIF_REQUEST_SEARCH_QUERY
+} from "./action";
 
 
 const defaultState = {
     items: [],
     isFetching: false,
     error: null,
+    query: ''
 };
 
 export const homeReducer = (state = defaultState, action) => {
@@ -40,10 +42,14 @@ export const homeReducer = (state = defaultState, action) => {
                 isFetching: false,
             };
 
-        default:
+        case GIF_REQUEST_SEARCH_QUERY:
             return {
-                ...state
-            }
+                ...state,
+                query: action.query
+            };
+
+        default:
+            return state
     }
-}
+};
 

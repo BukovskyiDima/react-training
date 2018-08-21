@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index'
 import connect from "react-redux/es/connect/connect";
-import { action } from "./services";
+import { getRandomGif } from "./services";
 
 class Random extends React.Component {
 
 	componentDidMount() {
-		action(this.props.dispatch);
+		this.props.getRandomGif();
 	};
 
 	render() {
@@ -15,17 +15,25 @@ class Random extends React.Component {
 				<div className="container">
 					<button
 						className="btn next"
-						onClick={() => action(this.props.dispatch)}
+						onClick={() => this.props.getRandomGif()}
 					>
 						Next
 					</button>
-					<GifsHolder items={this.props.gifs}/>
+					<GifsHolder items={this.props.items}/>
 				</div>
 			</main>
 		)
 	}
 }
 
-export default connect((state) => ({
-	gifs: state.random.gifs
-}))(Random);
+const mapStateToProps = (state) => ({
+	items: state.random.items
+});
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getRandomGif: () => getRandomGif(dispatch),
+	}
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Random);
