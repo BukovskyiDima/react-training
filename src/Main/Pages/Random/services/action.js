@@ -4,22 +4,25 @@ export const GIF_RANDOM_REQUEST = 'GIF_RANDOM_REQUEST';
 export const GIF_RANDOM_REQUEST_SUCCESS = 'GIF_RANDOM_REQUEST_SUCCESS';
 export const GIF_RANDOM_REQUEST_FAILED = 'GIF_RANDOM_REQUEST_FAILED';
 
-const randomGifRequest = () => ({
-    type: GIF_RANDOM_REQUEST,
-    isFetching: true,
-});
+export const randomGifRequest = () => {
+    return {
+        type: GIF_RANDOM_REQUEST
+    }
+};
 
-const randomGifRequestSuccess = (gifs) => ({
-    type: GIF_RANDOM_REQUEST_SUCCESS,
-    gifs,
-    isFetching: false,
-});
+export const randomGifRequestSuccess = (items) => {
+    return {
+        type: GIF_RANDOM_REQUEST_SUCCESS,
+        payload: {items}
+    }
+};
 
-const randomGifRequestError = (error) => ({
-    type: GIF_RANDOM_REQUEST_FAILED,
-    isFetching: false,
-    error,
-});
+export const randomGifRequestError = (error) => {
+    return {
+        type: GIF_RANDOM_REQUEST_FAILED,
+        error
+    }
+};
 
 export const action = (dispatch) => {
     dispatch(randomGifRequest());

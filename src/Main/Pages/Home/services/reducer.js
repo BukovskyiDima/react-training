@@ -1,27 +1,49 @@
 import {
-    GIF_REQUEST_FAILED,
     GIF_REQUEST,
-    GIF_REQUEST_SUCCESS,
-    GIF_REQUEST_SEARCH
-} from "./action";
+    GIF_REQUEST_FAILED,
+    GIF_REQUEST_SEARCH,
+    GIF_REQUEST_SUCCESS
+} from "action";
 
-export function gifs(state = [], action) {
-    switch (action.type) {
-        case GIF_REQUEST_SUCCESS:
-            return action.gifs
-        default:
-            return state
-    }
-}
 
-export function isGifsFetching(state = false, action) {
+const defaultState = {
+    items: [],
+    isFetching: false,
+    error: null,
+};
+
+export const homeReducer = (state = defaultState, action) => {
     switch (action.type) {
         case GIF_REQUEST:
+            return {
+                ...state,
+                isFetching: true,
+            };
+
         case GIF_REQUEST_SUCCESS:
+            return {
+                ...state,
+                items: action.payload.items,
+                isFetching: false,
+            };
+
         case GIF_REQUEST_FAILED:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.error,
+            };
+
         case GIF_REQUEST_SEARCH:
-            return action.isFetching;
+            return {
+                ...state,
+                isFetching: false,
+            };
+
         default:
-            return state
+            return {
+                ...state
+            }
     }
 }
+
