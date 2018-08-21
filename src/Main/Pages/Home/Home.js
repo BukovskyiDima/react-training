@@ -53,21 +53,4 @@ const mapStateToProps = (state) => ({
 	query: state.home.query,
 });
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		getGifs: () => getGifs(dispatch),
-		getSearchGifs: (query) => getSearchGifs(dispatch, query),
-		handleSearchRequestQuery: (query) => dispatch(handleSearchRequestQuery(query))
-	};
-};
-
-const mergeProps = (stateProps, dispatchProps) => {
-	const getSearchGifs = () => dispatchProps.getSearchGifs(stateProps.query);
-	return {
-		...stateProps,
-		...dispatchProps,
-		getSearchGifs
-	}
-};
-
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Home);
+export default connect(mapStateToProps, { getGifs, getSearchGifs, handleSearchRequestQuery })(Home);

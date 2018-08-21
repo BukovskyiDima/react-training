@@ -30,10 +30,4 @@ const mapStateToProps = (state) => ({
 	items: state.random.items
 });
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		getRandomGif: () => getRandomGif(dispatch),
-	}
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Random);
+export default connect(mapStateToProps, { getRandomGif } )(Random);

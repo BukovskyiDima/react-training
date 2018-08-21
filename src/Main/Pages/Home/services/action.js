@@ -30,16 +30,16 @@ export const handleSearchRequestQuery = (query) => ({
 });
 
 
-export const getGifs = (dispatch) => {
+export const getGifs = () => (dispatch) => {
     dispatch(gifRequest());
     api.trending()
         .then(response => dispatch(gifRequestSuccess(response.data.data)))
         .catch(error => dispatch(gifRequestError(error)));
 };
 
-export const getSearchGifs = (dispatch, parametr) => {
+export const getSearchGifs = () => (dispatch, getState) => {
     dispatch(gifSearchRequest());
-    api.search(parametr)
+    api.search(getState().home.query)
         .then(response => dispatch(gifRequestSuccess(response.data.data)))
         .catch(error => dispatch(gifRequestError(error)));
 };

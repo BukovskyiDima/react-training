@@ -6,11 +6,6 @@ import {
 
 class Header extends React.Component {
 
-	componentDidUpdate() {
-		console.log(this.props.location.pathname)
-	}
-
-
 	render() {
 		return (
 			<header id="header">
