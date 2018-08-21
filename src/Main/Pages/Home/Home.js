@@ -17,7 +17,7 @@ export class Home extends React.Component {
 	formSubmit = (e) => {
 		e.preventDefault();
 
-		const value = this.props.value;
+		const value = this.props.query;
 		value !== ''
 			? this.props.getSearchGifs()
 			: this.props.getGifs()
@@ -27,11 +27,20 @@ export class Home extends React.Component {
 
 		return (
 			<main>
-				<div className="container">
-					<form onSubmit={this.formSubmit} className="form-holder">
+				<div
+					className="container"
+				>
+					<form
+						onSubmit={this.formSubmit}
+						className="form-holder"
+					>
 						<div className="input-holder">
-							<input type="text" placeholder="Type here... " value={this.props.query}
-							       onChange={this.handleValueChange}/>
+							<input
+								type="text"
+								placeholder="Type here... "
+								value={this.props.query}
+								onChange={this.handleValueChange}
+							/>
 						</div>
 						<button
 							className="btn"
@@ -40,8 +49,12 @@ export class Home extends React.Component {
 						</button>
 					</form>
 				</div>
-				<div className="container">
-					<GifsHolder items={this.props.items}/>
+				<div
+					className="container"
+				>
+					<GifsHolder
+						items={this.props.items}
+					/>
 				</div>
 			</main>
 		)
@@ -53,4 +66,4 @@ const mapStateToProps = (state) => ({
 	query: state.home.query,
 });
 
-export default connect(mapStateToProps, { getGifs, getSearchGifs, handleSearchRequestQuery })(Home);
+export default connect(mapStateToProps, {getGifs, getSearchGifs, handleSearchRequestQuery})(Home);

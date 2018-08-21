@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 
 export default class GifsHolder extends React.Component {
-	render(){
+	render() {
 		return (
 			<div className="item-holder">
 				{this.props.items.map(item => (
@@ -18,4 +18,4 @@ export default class GifsHolder extends React.Component {
 GifsHolder.propTypes = {
 	item: PropTypes.object,
 	id: PropTypes.string
-}
+};

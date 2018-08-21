@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-	Link,
-	withRouter
-} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class Header extends React.Component {
 
@@ -13,7 +10,7 @@ class Header extends React.Component {
 					<ul className="button-holder">
 						<li>
 							<Link
-								className={ "btn" + (this.props.location.pathname === '/' ? ' active' : '')}
+								className={"btn" + (this.props.location.pathname === '/' ? ' active' : '')}
 								to="/"
 							>
 								Home
@@ -21,7 +18,7 @@ class Header extends React.Component {
 						</li>
 						<li>
 							<Link
-								className={ "btn" + (this.props.location.pathname === '/random' ? ' active' : '')}
+								className={"btn" + (this.props.location.pathname === '/random' ? ' active' : '')}
 								to="/random"
 							>
 								Random
