@@ -10,7 +10,11 @@ import {
 export class Home extends React.Component {
 
 	componentDidMount() {
-		this.props.gifRequest();
+        const value = this.props.query;
+
+        value === ''
+            ? this.props.gifRequest()
+            : this.props.gifSearchRequest()
 	};
 
 	handleValueChange = (e) => {
