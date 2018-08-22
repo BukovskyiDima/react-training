@@ -1,9 +1,4 @@
-import {
-	GIF_REQUEST,
-	GIF_REQUEST_SEARCH,
-	gifRequestError,
-	gifRequestSuccess
-} from "./action";
+import { GIF_REQUEST, GIF_REQUEST_SEARCH, gifRequestError, gifRequestSuccess } from "./action";
 import { of } from "rxjs";
 import { catchError, map, mergeMap } from "rxjs/operators";
 import { combineEpics, ofType } from "redux-observable";

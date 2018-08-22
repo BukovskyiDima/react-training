@@ -1,8 +1,4 @@
-import {
-	GIF_RANDOM_REQUEST,
-	randomGifRequestError,
-	randomGifRequestSuccess
-} from "./action";
+import { GIF_RANDOM_REQUEST, randomGifRequestError, randomGifRequestSuccess } from "./action";
 import { of } from "rxjs";
 import { catchError, map, mergeMap } from "rxjs/operators";
 import { ofType } from "redux-observable";

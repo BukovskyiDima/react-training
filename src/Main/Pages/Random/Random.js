@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { GifsHolder } from '../../../Components/index'
 import { connect } from "react-redux";
-import {
-	randomGifRequest
-} from "./services";
+import { randomGifRequest } from "./services";
 
 class Random extends React.Component {
 

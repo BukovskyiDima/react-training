@@ -8,7 +8,7 @@ class Header extends React.Component {
 		return (
 			<header id="header">
 				<div className="container">
-                    <strong className="logo">
+					<strong className="logo">
 						<a href="/">
 							<img src="./images/logo.png" alt="react-training"/>
 						</a>

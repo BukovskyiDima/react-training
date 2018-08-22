@@ -4,7 +4,7 @@ import './GifItem.scss';
 
 export default class GifItem extends React.Component {
 	render() {
-        return (
+		return (
 			<div className="item" key={this.props.item.id}>
 				<video controls="controls" loop="loop">
 					<source src={this.props.item.images.original.mp4} type="video/mp4"/>
@@ -16,5 +16,5 @@ export default class GifItem extends React.Component {
 }
 
 GifItem.propTypes = {
-    item: PropTypes.object
+	item: PropTypes.object
 };

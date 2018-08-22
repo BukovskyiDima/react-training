@@ -1,8 +1,4 @@
-import {
-	GIF_RANDOM_REQUEST,
-	GIF_RANDOM_REQUEST_FAILED,
-	GIF_RANDOM_REQUEST_SUCCESS
-} from "./action";
+import { GIF_RANDOM_REQUEST, GIF_RANDOM_REQUEST_FAILED, GIF_RANDOM_REQUEST_SUCCESS } from "./action";
 
 const defaultState = {
 	items: [],
