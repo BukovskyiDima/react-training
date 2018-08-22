@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { GifsHolder } from '../../../Components/index';
 import { connect } from "react-redux";
 import {
@@ -13,13 +14,13 @@ export class Home extends React.Component {
 	componentDidMount() {
         const value = this.props.query;
 
-        value === ''
-            ? this.props.gifRequest()
-            : this.props.gifSearchRequest()
+        // value === ''
+        //     ? this.props.gifRequest()
+        //     : this.props.gifSearchRequest()
 	};
 
 	handleValueChange = (e) => {
-		this.props.handleSearchRequestQuery(e.target.value);
+		// this.props.handleSearchRequestQuery(e.target.value);
 	};
 
 	formSubmit = (e) => {
@@ -64,12 +65,19 @@ export class Home extends React.Component {
 					className="container"
 				>
                     <GifsHolder items={items} />
-					{error !== '' ? <span className="loading">{error}</span> : null}
+					{error !== '' ? <span className="error">{error}</span> : null}
 				</div>
 			</main>
 		)
 	}
 }
+
+Home.propTypes= {
+	items: PropTypes.array,
+	query: PropTypes.string,
+	isFetching: PropTypes.bool,
+	error: PropTypes.string
+};
 
 const mapStateToProps = ({home: {items, query, isFetching, error}}) => ({
 	items: items,
