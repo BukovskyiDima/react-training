@@ -27,7 +27,6 @@ export class Home extends React.Component {
 	};
 
 	render() {
-		const {items, query, isFetching, error} = this.props;
 
 		return (
 			<main>
@@ -43,7 +42,7 @@ export class Home extends React.Component {
 								className='input'
 								type="text"
 								placeholder="Type here... "
-								value={query}
+								value={this.props.query}
 								onChange={this.handleValueChange}
 							/>
 						</div>
@@ -57,8 +56,8 @@ export class Home extends React.Component {
 				<div
 					className="container"
 				>
-                    {isFetching ? <GifsHolder items={items} /> : null}
-					{error ? <span className="loading">{error}</span> : null}
+                    {!this.props.isFetching ? <GifsHolder items={this.props.items} /> : null}
+					{this.props.error ? <span className="loading">{this.props.error}</span> : null}
 				</div>
 			</main>
 		)
