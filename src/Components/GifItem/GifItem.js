@@ -1,9 +1,10 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import './GifItem.scss';
 
 export default class GifItem extends React.Component {
 	render() {
-		return (
+        return (
 			<div className="item" key={this.props.item.id}>
 				<video controls="controls" loop="loop">
 					<source src={this.props.item.images.original.mp4} type="video/mp4"/>
@@ -15,7 +16,5 @@ export default class GifItem extends React.Component {
 }
 
 GifItem.propTypes = {
-	id: PropTypes.string,
-	mp4: PropTypes.string,
-	title: PropTypes.string
+    item: PropTypes.object
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import GifItem from '../GifItem/GifItem';
 import PropTypes from 'prop-types';
-
+import './GifsHolder.scss';
 
 export default class GifsHolder extends React.Component {
 	render() {
@@ -16,6 +16,5 @@ export default class GifsHolder extends React.Component {
 }
 
 GifsHolder.propTypes = {
-	item: PropTypes.object,
-	id: PropTypes.string
+	items: PropTypes.array
 };

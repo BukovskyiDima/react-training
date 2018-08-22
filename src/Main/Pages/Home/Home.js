@@ -6,6 +6,7 @@ import {
 	getGifByQuery,
 	handleSearchRequestQuery
 } from "./services";
+import './Home.scss';
 
 export class Home extends React.Component {
 
@@ -31,8 +32,10 @@ export class Home extends React.Component {
 	};
 
 	render() {
+        const {items, query, error} = this.props;
 
-		return (
+        return (
+
 			<main>
 				<div
 					className="container"
@@ -46,7 +49,7 @@ export class Home extends React.Component {
 								className='input'
 								type="text"
 								placeholder="Type here... "
-								value={this.props.query}
+								value={query}
 								onChange={this.handleValueChange}
 							/>
 						</div>
@@ -60,19 +63,19 @@ export class Home extends React.Component {
 				<div
 					className="container"
 				>
-                    {!this.props.isFetching ? <GifsHolder items={this.props.items} /> : null}
-					{this.props.error ? <span className="loading">{this.props.error}</span> : null}
+                    <GifsHolder items={items} />
+					{error !== '' ? <span className="loading">{error}</span> : null}
 				</div>
 			</main>
 		)
 	}
 }
 
-const mapStateToProps = (state) => ({
-	items: state.home.items,
-	query: state.home.query,
-    isFetching: state.home.isFetching,
-	error: state.home.error
+const mapStateToProps = ({home: {items, query, isFetching, error}}) => ({
+	items: items,
+	query: query,
+    isFetching: isFetching,
+	error: error
 });
 
 export default connect(

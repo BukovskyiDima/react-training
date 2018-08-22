@@ -1,0 +1,24 @@
+form {
+    display: flex;
+    width: 100%;
+    min-width: 320px;
+}
+
+.input-holder {
+    width: 100%;
+
+    input {
+        padding: 10px 14px;
+        width: 100%;
+        outline: none;
+    }
+}
+
+.form-holder {
+    margin-bottom: 25px;
+}
+
+.error {
+    text-align: center;
+    display: block;
+}

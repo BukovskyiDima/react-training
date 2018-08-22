@@ -12,6 +12,8 @@ class Random extends React.Component {
 	};
 
 	render() {
+		const {items} = this.props;
+
 		return (
 			<main>
 				<div
@@ -19,12 +21,12 @@ class Random extends React.Component {
 				>
 					<button
 						className="btn next"
-						onClick={() => this.props.getRandomGif()}
+						onClick={this.props.getRandomGif}
 					>
 						Next
 					</button>
 					<GifsHolder
-						items={this.props.items}
+						items={items}
 					/>
 				</div>
 			</main>
@@ -32,8 +34,8 @@ class Random extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	items: state.random.items
+const mapStateToProps = ({random: {items}}) => ({
+	items: items
 });
 
 export default connect(mapStateToProps, {getRandomGif: randomGifRequest})(Random);
