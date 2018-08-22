@@ -27,6 +27,7 @@ export class Home extends React.Component {
 	};
 
 	render() {
+		const {items, query, isFetching, error} = this.props;
 
 		return (
 			<main>
@@ -39,9 +40,10 @@ export class Home extends React.Component {
 					>
 						<div className="input-holder">
 							<input
+								className='input'
 								type="text"
 								placeholder="Type here... "
-								value={this.props.query}
+								value={query}
 								onChange={this.handleValueChange}
 							/>
 						</div>
@@ -55,9 +57,8 @@ export class Home extends React.Component {
 				<div
 					className="container"
 				>
-					<GifsHolder
-						items={this.props.items}
-					/>
+                    {isFetching ? <GifsHolder items={items} /> : null}
+					{error ? <span className="loading">{error}</span> : null}
 				</div>
 			</main>
 		)
@@ -67,6 +68,15 @@ export class Home extends React.Component {
 const mapStateToProps = (state) => ({
 	items: state.home.items,
 	query: state.home.query,
+    isFetching: state.home.isFetching,
+	error: state.home.error
 });
 
-export default connect(mapStateToProps, {gifRequest: getGif, gifSearchRequest: getGifByQuery, handleSearchRequestQuery})(Home);
+export default connect(
+	mapStateToProps,
+	{
+		gifRequest: getGif,
+		gifSearchRequest: getGifByQuery,
+		handleSearchRequestQuery
+	}
+)(Home);
