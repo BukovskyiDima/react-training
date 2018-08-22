@@ -1,5 +1,5 @@
 import { applyMiddleware, createStore } from 'redux';
-import rootReducer from '../reducer';
+import rootReducer from './reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { homeEpic } from '../Main/Pages/Home/services/';
@@ -8,16 +8,16 @@ import api from './api';
 
 export default function (initialState) {
 
-    const appEpic = combineEpics(
-    	homeEpic,
+	const appEpic = combineEpics(
+		homeEpic,
 		randomEpic
 	);
 
-    const epicMiddleware = createEpicMiddleware({
+	const epicMiddleware = createEpicMiddleware({
 		dependencies: {
 			api
 		}
-    });
+	});
 
 	const store = createStore(
 		rootReducer,

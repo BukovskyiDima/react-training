@@ -2,7 +2,7 @@ import * as  React from 'react';
 import './App.scss';
 import Main from './Main';
 import { Provider } from 'react-redux';
-import createStore from './service/store';
+import createStore from './store/index';
 
 const store = createStore();
 

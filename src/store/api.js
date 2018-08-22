@@ -1,29 +1,33 @@
-import axios from 'axios';
+import { ajax } from "rxjs/ajax";
 
-const API_KEY = 'zW3QkmvOf9ivEjRrXElFxe0C4KFd3zfO';
+// api key
+// FipGdloXqHUVHcSHhtIBnhEmfJ89IvLv
+// zW3QkmvOf9ivEjRrXElFxe0C4KFd3zfO
+
+const API_KEY = 'FipGdloXqHUVHcSHhtIBnhEmfJ89IvLv';
 const URL = 'https://api.giphy.com/v1/gifs';
 
 const api = {
 
 	trending: () => {
-		return axios({
-			method: 'get',
+		return ajax({
 			url: `${URL}/trending?api_key=${API_KEY}&limit=24`,
+			responseType: 'json'
 		})
 	},
 
 	search: (value) => {
 
-		return axios({
-			method: 'get',
+		return ajax({
 			url: `${URL}/search?q=${value}&api_key=${API_KEY}&limit=24`,
+			responseType: 'json'
 		})
 	},
 
 	random: () => {
-		return axios({
-			method: 'get',
+		return ajax({
 			url: `${URL}/random?api_key=${API_KEY}`,
+			responseType: 'json'
 		})
 	},
 };

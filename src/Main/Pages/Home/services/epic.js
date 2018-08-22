@@ -4,27 +4,26 @@ import {
 	gifRequestError,
 	gifRequestSuccess
 } from "./action";
-import api from '../../../../service/api';
-import { from } from "rxjs";
+import { of } from "rxjs";
 import { catchError, map, mergeMap } from "rxjs/operators";
 import { combineEpics, ofType } from "redux-observable";
 
-const getGifsEpic = action$ => action$.pipe(
+const getGifsEpic = (action$, state$, {api}) => action$.pipe(
 	ofType(GIF_REQUEST),
 	mergeMap(() =>
-		from(api.trending()).pipe(
-			map(response => gifRequestSuccess(response.data.data)),
-			catchError(error => gifRequestError(error))
+		api.trending().pipe(
+			map(response => gifRequestSuccess(response.response.data)),
+			catchError(error => of(gifRequestError(error)))
 		)
 	)
 );
 
-const getGifsByQueryEpic = (action$, state$) => action$.pipe(
+const getGifsByQueryEpic = (action$, state$, {api}) => action$.pipe(
 	ofType(GIF_REQUEST_SEARCH),
 	mergeMap(() =>
-		from(api.search(state$.value.home.query)).pipe(
-			map(response => gifRequestSuccess(response.data.data)),
-			catchError(error => gifRequestError(error))
+		api.search(state$.value.home.query).pipe(
+			map(response => gifRequestSuccess(response.response.data)),
+			catchError(error => of(gifRequestError(error)))
 		)
 	)
 );

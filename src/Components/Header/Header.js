@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
 class Header extends React.Component {
 
@@ -9,20 +9,23 @@ class Header extends React.Component {
 				<div className="container">
 					<ul className="button-holder">
 						<li>
-							<Link
-								className={"btn" + (this.props.location.pathname === '/' ? ' active' : '')}
+							<NavLink
+								className={"btn"}
+								activeClassName={'active'}
+								exact
 								to="/"
 							>
 								Home
-							</Link>
+							</NavLink>
 						</li>
 						<li>
-							<Link
-								className={"btn" + (this.props.location.pathname === '/random' ? ' active' : '')}
+							<NavLink
+								className={"btn"}
+								activeClassName={'active'}
 								to="/random"
 							>
 								Random
-							</Link>
+							</NavLink>
 						</li>
 					</ul>
 				</div>
