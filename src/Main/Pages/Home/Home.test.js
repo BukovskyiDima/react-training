@@ -1,31 +1,48 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Home } from "./Home";
+import GifsHolder from "../../../Components/GifsHolder/GifsHolder";
 
 describe('<Home/>', () => {
 
 	it('should render error', () => {
-		const wrapper = shallow(<Home/>);
+		const handleValueChange = jest.fn();
+		const gifRequest = jest.fn();
+		const gifSearchRequest = jest.fn();
 
-		expect(wrapper.find('.error').text()).toBe('');
+		const wrapper = shallow(<Home
+			handleSearchRequestQuery={handleValueChange}
+			gifRequest={gifRequest}
+			gifSearchRequest={gifSearchRequest}
+		/>);
+
+		expect(wrapper.exists('.error')).toBe(false);
 
 		wrapper.setProps({
 			error: 'An error'
 		});
 
 		expect(wrapper.find('.error').text()).toBe('An error');
+		expect(wrapper.exists('.item-holder')).toBe(false);
 	});
 
-	it('should render handleValueChange', () => {
-		const handleValueChange = jest.fn();
-		const wrapper = shallow(<Home handleValueChange={handleValueChange}/>);
+	it('should render handleSearchRequestQuery', () => {
+		const handleSearchRequestQuery = jest.fn();
+		const gifRequest = jest.fn();
+		const gifSearchRequest = jest.fn();
 
-		console.dir(wrapper.find('input'));
-		expect(wrapper.find('input').value).toBe();
+		const wrapper = shallow(<Home
+			handleSearchRequestQuery={handleSearchRequestQuery}
+			gifRequest={gifRequest}
+			gifSearchRequest={gifSearchRequest}
+		/>);
 
-		wrapper.find('input').simulate('change', {target: {value: 'My new value'}});
+		expect(handleSearchRequestQuery.mock.calls.length).toBe(0);
 
-		expect(wrapper.find('.input').value).toBe('My new value')
+		wrapper.find('input').simulate('change', {target: {value: 'Hola!'}});
+
+		expect(handleSearchRequestQuery.mock.calls.length).toBe(1);
+		expect(handleSearchRequestQuery.mock.calls[0][0]).toBe('Hola!')
 	})
 
 });

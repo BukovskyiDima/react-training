@@ -4,12 +4,16 @@ import './GifItem.scss';
 
 export default class GifItem extends React.Component {
 	render() {
+		const { item } = this.props;
+		if( !item ){
+			return null;
+		}
 		return (
-			<div className="item" key={this.props.item.id}>
+			<div className="item">
 				<video controls="controls" loop="loop">
-					<source src={this.props.item.images.original.mp4} type="video/mp4"/>
+					<source src={item.images.original.mp4} type="video/mp4"/>
 				</video>
-				<span>{this.props.item.title}</span>
+				<span>{item.title}</span>
 			</div>
 		)
 	}

@@ -10,6 +10,7 @@ export default class GifsHolder extends React.Component {
 				{this.props.items.map(item => (
 					<GifItem key={item.id} item={item}/>
 				))}
+				<GifItem/>
 			</div>
 		)
 	}

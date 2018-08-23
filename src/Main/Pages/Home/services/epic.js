@@ -8,7 +8,8 @@ const getGifsEpic = (action$, state$, {api}) => action$.pipe(
 	mergeMap(() =>
 		api.trending().pipe(
 			map(response => gifRequestSuccess(response.response.data)),
-			catchError(error => of(gifRequestError(error)))
+			// map(response => {throw Error()}),
+			catchError(() => of(gifRequestError('An error!')))
 		)
 	)
 );
@@ -18,7 +19,7 @@ const getGifsByQueryEpic = (action$, state$, {api}) => action$.pipe(
 	mergeMap(() =>
 		api.search(state$.value.home.query).pipe(
 			map(response => gifRequestSuccess(response.response.data)),
-			catchError(error => of(gifRequestError(error)))
+			catchError(() => of(gifRequestError('An error!')))
 		)
 	)
 );

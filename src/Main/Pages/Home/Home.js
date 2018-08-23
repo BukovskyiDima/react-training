@@ -60,8 +60,7 @@ export class Home extends React.Component {
 				<div
 					className="container"
 				>
-					<GifsHolder items={items}/>
-					{error !== '' ? <span className="error">{error}</span> : null}
+					{error ? <span className="error">{error}</span> : <GifsHolder items={items}/>}
 				</div>
 			</main>
 		)
@@ -71,14 +70,15 @@ export class Home extends React.Component {
 Home.propTypes = {
 	items: PropTypes.array,
 	query: PropTypes.string,
-	isFetching: PropTypes.bool,
-	error: PropTypes.string
+	error: PropTypes.string,
+	handleSearchRequestQuery: PropTypes.func,
+	gifRequest: PropTypes.func,
+	gifSearchRequest: PropTypes.func
 };
 
-const mapStateToProps = ({home: {items, query, isFetching, error}}) => ({
+const mapStateToProps = ({home: {items, query, error}}) => ({
 	items: items,
 	query: query,
-	isFetching: isFetching,
 	error: error
 });
 
@@ -87,6 +87,6 @@ export default connect(
 	{
 		gifRequest: getGif,
 		gifSearchRequest: getGifByQuery,
-		handleSearchRequestQuery
+		handleSearchRequestQuery: handleSearchRequestQuery
 	}
 )(Home);
