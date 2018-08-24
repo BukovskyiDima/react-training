@@ -4,46 +4,46 @@ import { Home } from "./Home";
 
 describe('<Home/>', () => {
 
-	it('should render error', () => {
-		const handleSearchRequestQuery = jest.fn();
-		const gifRequest = jest.fn();
-		const gifSearchRequest = jest.fn();
+    it('should render error', () => {
+        const handleSearchRequestQuery = jest.fn();
+        const gifRequest = jest.fn();
+        const gifSearchRequest = jest.fn();
 
-		const wrapper = shallow(<Home
-			handleSearchRequestQuery={handleSearchRequestQuery}
-			gifRequest={gifRequest}
-			gifSearchRequest={gifSearchRequest}
+        const wrapper = shallow(<Home
+            handleSearchRequestQuery={handleSearchRequestQuery}
+            gifRequest={gifRequest}
+            gifSearchRequest={gifSearchRequest}
             error={''}
-		/>);
+        />);
 
-		expect(wrapper.exists('.error')).toBe(false);
+        expect(wrapper.exists('.error')).toBe(false);
 
-		wrapper.setProps({
-			error: 'An error'
-		});
+        wrapper.setProps({
+            error: 'An error'
+        });
 
-		expect(wrapper.find('.error').text()).toBe('An error');
-		expect(wrapper.contains('<GifsHolder/>')).toBe(false);
-	});
+        expect(wrapper.find('.error').text()).toBe('An error');
+        expect(wrapper.contains('<GifsHolder/>')).toBe(false);
+    });
 
-	it('should render handleSearchRequestQuery', () => {
-		const handleSearchRequestQuery = jest.fn();
-		const gifRequest = jest.fn();
-		const gifSearchRequest = jest.fn();
+    it('should render handleSearchRequestQuery', () => {
+        const handleSearchRequestQuery = jest.fn();
+        const gifRequest = jest.fn();
+        const gifSearchRequest = jest.fn();
 
-		const wrapper = shallow(<Home
-			handleSearchRequestQuery={handleSearchRequestQuery}
-			gifRequest={gifRequest}
-			gifSearchRequest={gifSearchRequest}
-		/>);
+        const wrapper = shallow(<Home
+            handleSearchRequestQuery={handleSearchRequestQuery}
+            gifRequest={gifRequest}
+            gifSearchRequest={gifSearchRequest}
+        />);
 
-		expect(handleSearchRequestQuery.mock.calls.length).toBe(0);
+        expect(handleSearchRequestQuery.mock.calls.length).toBe(0);
 
-		wrapper.find('input').simulate('change', {target: {value: 'Hola!'}});
+        wrapper.find('input').simulate('change', {target: {value: 'Hola!'}});
 
-		expect(handleSearchRequestQuery.mock.calls.length).toBe(1);
-		expect(handleSearchRequestQuery.mock.calls[0][0]).toBe('Hola!')
-	});
+        expect(handleSearchRequestQuery.mock.calls.length).toBe(1);
+        expect(handleSearchRequestQuery.mock.calls[0][0]).toBe('Hola!')
+    });
 
     it('should render items', () => {
         const handleSearchRequestQuery = jest.fn();

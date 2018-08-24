@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Random }from "./Random";
+import { Random } from "./Random";
 
 describe('<Random/>', () => {
 
@@ -11,7 +11,8 @@ describe('<Random/>', () => {
 
         expect(getRandomGif.mock.calls.length).toBe(1);
 
-        wrapper.find('.btn').simulate('click', () => {});
+        wrapper.find('.btn').simulate('click', () => {
+        });
 
         expect(getRandomGif.mock.calls.length).toBe(2);
     });

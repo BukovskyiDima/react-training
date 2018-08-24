@@ -8,25 +8,25 @@ import api from './api';
 
 export default function (initialState) {
 
-	const appEpic = combineEpics(
-		homeEpic,
-		randomEpic
-	);
+    const appEpic = combineEpics(
+        homeEpic,
+        randomEpic
+    );
 
-	const epicMiddleware = createEpicMiddleware({
-		dependencies: {
-			api
-		}
-	});
+    const epicMiddleware = createEpicMiddleware({
+        dependencies: {
+            api
+        }
+    });
 
-	const store = createStore(
-		rootReducer,
-		composeWithDevTools(),
-		applyMiddleware(epicMiddleware),
-		initialState
-	);
+    const store = createStore(
+        rootReducer,
+        composeWithDevTools(),
+        applyMiddleware(epicMiddleware),
+        initialState
+    );
 
-	epicMiddleware.run(appEpic);
+    epicMiddleware.run(appEpic);
 
-	return store;
+    return store;
 }

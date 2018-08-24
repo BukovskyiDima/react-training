@@ -4,17 +4,17 @@ import * as Page from './Pages/index';
 import Header from '../Components/Header/Header';
 
 export default class Main extends React.Component {
-	render() {
-		return (
-			<Router>
-				<React.Fragment>
-					<Header/>
-					<Switch>
-						<Route exact path="/" component={Page.Home}/>
-						<Route path="/random" component={Page.Random}/>
-					</Switch>
-				</React.Fragment>
-			</Router>
-		)
-	}
+    render() {
+        return (
+            <Router>
+                <React.Fragment>
+                    <Header/>
+                    <Switch>
+                        <Route exact path="/" component={Page.Home}/>
+                        <Route path="/random" component={Page.Random}/>
+                    </Switch>
+                </React.Fragment>
+            </Router>
+        )
+    }
 }

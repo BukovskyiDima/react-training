@@ -5,24 +5,24 @@ export const GIF_REQUEST_SEARCH = 'GIF_REQUEST_SEARCH';
 export const GIF_REQUEST_SEARCH_QUERY = 'GIF_REQUEST_SEARCH_QUERY';
 
 export const getGif = () => ({
-	type: GIF_REQUEST
+    type: GIF_REQUEST
 });
 
 export const getGifByQuery = () => ({
-	type: GIF_REQUEST_SEARCH
+    type: GIF_REQUEST_SEARCH
 });
 
 export const gifRequestSuccess = (items) => ({
-	type: GIF_REQUEST_SUCCESS,
-	payload: {items}
+    type: GIF_REQUEST_SUCCESS,
+    payload: {items}
 });
 
 export const gifRequestError = (error) => ({
-	type: GIF_REQUEST_FAILED,
-	error
+    type: GIF_REQUEST_FAILED,
+    error
 });
 
 export const handleSearchRequestQuery = (query) => ({
-	type: GIF_REQUEST_SEARCH_QUERY,
-	query
+    type: GIF_REQUEST_SEARCH_QUERY,
+    query
 });

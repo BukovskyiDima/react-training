@@ -4,6 +4,6 @@ import { randomReducer } from '../Main/Pages/Random/services/reducer';
 
 
 export default combineReducers({
-	home: homeReducer,
-	random: randomReducer
+    home: homeReducer,
+    random: randomReducer
 })
