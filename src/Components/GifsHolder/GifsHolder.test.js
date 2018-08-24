@@ -10,7 +10,8 @@ describe('<GifsHolder/>', () => {
             items={[]}
         />);
 
-        expect(wrapper.find('.items-holder').length).toBe(0);
+        expect(wrapper.find('.items-holder').children()).toHaveLength(0);
+        console.log(wrapper.debug('.items-holder'));
 
         wrapper.setProps({
             items: [
@@ -47,7 +48,7 @@ describe('<GifsHolder/>', () => {
             ]
         });
 
-        // expect(wrapper.debug('.item')).toBe('<div className=\"item-holder\">\n'+'  <GifItem item={{...}} />\n'+'</div>');
+        expect(wrapper.find('.items-holder').children()).toHaveLength(3);
     });
 
 });

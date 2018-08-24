@@ -20,6 +20,7 @@ describe('<GifItem/>', () => {
             }
         });
 
+        expect(wrapper.find('source').prop('src')).toBe('src for mp4');
         expect(wrapper.find('span').text()).toBe('must be title');
     })
 });
