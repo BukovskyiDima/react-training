@@ -5,12 +5,13 @@ import './GifsHolder.scss';
 
 export default class GifsHolder extends React.Component {
 	render() {
-		return (
+        const { items } = this.props;
+
+        return (
 			<div className="item-holder">
-				{this.props.items.map(item => (
+				{items.map(item => (
 					<GifItem key={item.id} item={item}/>
 				))}
-				<GifItem/>
 			</div>
 		)
 	}

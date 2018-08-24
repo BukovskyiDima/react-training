@@ -3,7 +3,7 @@ import { GifsHolder } from '../../../Components/index'
 import { connect } from "react-redux";
 import { randomGifRequest } from "./services";
 
-class Random extends React.Component {
+export class Random extends React.Component {
 
 	componentDidMount() {
 		this.props.getRandomGif();

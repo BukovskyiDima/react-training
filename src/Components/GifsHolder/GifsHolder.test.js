@@ -1,62 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Home } from "./Home";
+import GifsHolder from "./GifsHolder";
 
-describe('<Home/>', () => {
+describe('<GifsHolder/>', () => {
 
-	it('should render error', () => {
-		const handleSearchRequestQuery = jest.fn();
-		const gifRequest = jest.fn();
-		const gifSearchRequest = jest.fn();
+    it('should render error', () => {
 
-		const wrapper = shallow(<Home
-			handleSearchRequestQuery={handleSearchRequestQuery}
-			gifRequest={gifRequest}
-			gifSearchRequest={gifSearchRequest}
-            error={''}
-		/>);
-
-		expect(wrapper.exists('.error')).toBe(false);
-
-		wrapper.setProps({
-			error: 'An error'
-		});
-
-		expect(wrapper.find('.error').text()).toBe('An error');
-		expect(wrapper.contains('<GifsHolder/>')).toBe(false);
-	});
-
-	it('should render handleSearchRequestQuery', () => {
-		const handleSearchRequestQuery = jest.fn();
-		const gifRequest = jest.fn();
-		const gifSearchRequest = jest.fn();
-
-		const wrapper = shallow(<Home
-			handleSearchRequestQuery={handleSearchRequestQuery}
-			gifRequest={gifRequest}
-			gifSearchRequest={gifSearchRequest}
-		/>);
-
-		expect(handleSearchRequestQuery.mock.calls.length).toBe(0);
-
-		wrapper.find('input').simulate('change', {target: {value: 'Hola!'}});
-
-		expect(handleSearchRequestQuery.mock.calls.length).toBe(1);
-		expect(handleSearchRequestQuery.mock.calls[0][0]).toBe('Hola!')
-	});
-
-    it('should render items', () => {
-        const handleSearchRequestQuery = jest.fn();
-        const gifRequest = jest.fn();
-        const gifSearchRequest = jest.fn();
-
-        const wrapper = shallow(<Home
-            handleSearchRequestQuery={handleSearchRequestQuery}
-            gifRequest={gifRequest}
-            gifSearchRequest={gifSearchRequest}
+        const wrapper = shallow(<GifsHolder
+            items={[]}
         />);
 
-        expect(wrapper.contains('<GifsHolder/>')).toBe(false);
+        expect(wrapper.debug('.item')).toBe('<div className=\"item-holder\" />');
 
         wrapper.setProps({
             items: [
@@ -236,12 +190,10 @@ describe('<Home/>', () => {
                     title: 'car GIF',
                     _score: 2500002.5
                 }
-            ],
-            error: ''
+            ]
         });
 
-        expect(wrapper.exists('.error')).toBe(false);
+        expect(wrapper.debug('.item')).toBe('<div className=\"item-holder\">\n'+'  <GifItem item={{...}} />\n'+'</div>');
     });
 
 });
-

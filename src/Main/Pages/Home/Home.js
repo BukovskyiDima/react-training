@@ -2,17 +2,21 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { GifsHolder } from '../../../Components/index';
 import { connect } from "react-redux";
-import { getGif, getGifByQuery, handleSearchRequestQuery } from "./services";
+import {
+	getGif,
+	getGifByQuery,
+	handleSearchRequestQuery
+} from "./services";
 import './Home.scss';
 
 export class Home extends React.Component {
 
 	componentDidMount() {
-		const value = this.props.query;
+        const value = this.props.query;
 
-		value === ''
-			? this.props.gifRequest()
-			: this.props.gifSearchRequest()
+        value === ''
+            ? this.props.gifRequest()
+            : this.props.gifSearchRequest()
 	};
 
 	handleValueChange = (e) => {
@@ -29,9 +33,9 @@ export class Home extends React.Component {
 	};
 
 	render() {
-		const {items, query, error} = this.props;
+        const {items, query, error} = this.props;
 
-		return (
+        return (
 
 			<main>
 				<div
@@ -60,25 +64,25 @@ export class Home extends React.Component {
 				<div
 					className="container"
 				>
-					{error ? <span className="error">{error}</span> : <GifsHolder items={items}/>}
+                    <GifsHolder items={items} />
+					{error !== '' ? <span className="error">{error}</span> : null}
 				</div>
 			</main>
 		)
 	}
 }
 
-Home.propTypes = {
+Home.propTypes= {
 	items: PropTypes.array,
 	query: PropTypes.string,
-	error: PropTypes.string,
-	handleSearchRequestQuery: PropTypes.func,
-	gifRequest: PropTypes.func,
-	gifSearchRequest: PropTypes.func
+	isFetching: PropTypes.bool,
+	error: PropTypes.string
 };
 
-const mapStateToProps = ({home: {items, query, error}}) => ({
+const mapStateToProps = ({home: {items, query, isFetching, error}}) => ({
 	items: items,
 	query: query,
+    isFetching: isFetching,
 	error: error
 });
 
@@ -87,6 +91,6 @@ export default connect(
 	{
 		gifRequest: getGif,
 		gifSearchRequest: getGifByQuery,
-		handleSearchRequestQuery: handleSearchRequestQuery
+		handleSearchRequestQuery
 	}
 )(Home);
