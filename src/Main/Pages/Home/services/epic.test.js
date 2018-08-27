@@ -6,6 +6,7 @@ import {
     getGif,
     getGifByQuery
 } from './index';
+import { ActionsObservable } from "redux-observable";
 
 const testScheduler = new TestScheduler((actual, expected) => {
     // somehow assert the two objects are equal
@@ -38,11 +39,13 @@ describe('homeEpic', () => {
 
             homeEpic(action$, state$, dependencies);
 
-
         });
     });
 
-    it('ololo', () => {
+    it('dispatches home page epics', () => {
+        const action = ActionsObservable.of({
+            type: GIF_REQUEST,
+        });
 
         expect(dependencies.api.trending.mock.calls.length).toBe(1);
 
