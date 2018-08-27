@@ -4,29 +4,38 @@ import * as action from "./action";
 describe( 'reducer' ,() => {
 
     it('must be homeReducer GIF_RANDOM_REQUEST',() => {
-        expect(randomReducer(undefined , action.GIF_RANDOM_REQUEST)).toEqual(
+        expect(randomReducer(undefined , {type: action.GIF_RANDOM_REQUEST})).toEqual(
             {
                 error: null,
-                isFetching: false,
+                isFetching: true,
                 items: []
             }
         );
     });
 
     it('must be GIF_RANDOM_REQUEST_SUCCESS', () => {
-        expect(randomReducer(undefined , action.GIF_RANDOM_REQUEST_SUCCESS)).toEqual(
+        expect(randomReducer(undefined , {
+            type: action.GIF_RANDOM_REQUEST_SUCCESS,
+            payload: {
+                items: {
+                    item: 1
+                }
+            }
+        })).toEqual(
             {
                 error: null,
                 isFetching: false,
-                items: []
+                items: {
+                    item: 1
+                }
             }
         );
     });
 
     it('must be GIF_RANDOM_REQUEST_FAILED', () => {
-        expect(randomReducer(undefined , action.GIF_RANDOM_REQUEST_FAILED)).toEqual(
+        expect(randomReducer(undefined , {type: action.GIF_RANDOM_REQUEST_FAILED, error: 'error'})).toEqual(
             {
-                error: null,
+                error: 'error',
                 isFetching: false,
                 items: []
             }

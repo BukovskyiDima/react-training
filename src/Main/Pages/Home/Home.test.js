@@ -24,7 +24,6 @@ describe('<Home/>', () => {
 
     it('should render error', () => {
 
-
         expect(wrapper.exists('.error')).toBe(false);
 
         wrapper.setProps({
@@ -32,7 +31,7 @@ describe('<Home/>', () => {
         });
 
         expect(wrapper.find('.error').text()).toBe('An error');
-        expect(wrapper.contains('<GifsHolder/>')).toBe(false);
+        expect(wrapper.exists('.error')).toBe(true);
     });
 
     it('should render handleSearchRequestQuery', () => {
@@ -47,7 +46,8 @@ describe('<Home/>', () => {
 
     it('should render items', () => {
 
-        expect(wrapper.contains('<GifsHolder/>')).toBe(false);
+        console.log(wrapper.find('.items-holder').children().length);
+        expect(wrapper.find('.items-holder').children().length).toBe(0);
 
         wrapper.setProps({
             items: [
@@ -85,7 +85,8 @@ describe('<Home/>', () => {
             error: ''
         });
 
-        expect(wrapper.exists('.error')).toBe(false);
+        console.log(wrapper.find('.items-holder').children().length);
+        expect(wrapper.find('.items-holder').children().length).toBe(3);
     });
 
 });

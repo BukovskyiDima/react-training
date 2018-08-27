@@ -38,7 +38,7 @@ export const homeReducer = (state = defaultState, action) => {
         case GIF_REQUEST_SEARCH:
             return {
                 ...state,
-                isFetching: false,
+                isFetching: true,
             };
 
         case GIF_REQUEST_SEARCH_QUERY:

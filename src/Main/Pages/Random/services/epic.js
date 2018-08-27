@@ -8,7 +8,7 @@ const getRandomGifEpic = (action$, state$, {api}) => action$.pipe(
     mergeMap(() =>
         api.random().pipe(
             map(response => randomGifRequestSuccess([response.response.data])),
-            catchError(error => of(randomGifRequestError(error)))
+            catchError(error => of(randomGifRequestError('An error!')))
         )
     )
 );
