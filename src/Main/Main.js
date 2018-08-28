@@ -12,6 +12,7 @@ export default class Main extends React.Component {
                     <Switch>
                         <Route exact path="/" component={Page.Home}/>
                         <Route path="/random" component={Page.Random}/>
+                        <Route path="/logout" component={Page.Auth}/>
                     </Switch>
                 </React.Fragment>
             </Router>

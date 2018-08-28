@@ -5,6 +5,8 @@ import './Header.scss';
 class Header extends React.Component {
 
     render() {
+        const { loggedIn } = this.props || false;
+
         return (
             <header id="header">
                 <div className="container">
@@ -33,6 +35,27 @@ class Header extends React.Component {
                                 Random
                             </NavLink>
                         </li>
+
+                        {!loggedIn
+                            ? <li>
+                                <NavLink
+                                    className={"btn"}
+                                    activeClassName={"active"}
+                                    to="/login"
+                                >
+                                    Log In
+                                </NavLink>
+                            </li>
+                            : <li>
+                                <NavLink
+                                    className={"btn"}
+                                    activeClassName={"active"}
+                                    to="/"
+                                >
+                                    Log Out
+                                </NavLink>
+                            </li>
+                        }
                     </ul>
                 </div>
             </header>

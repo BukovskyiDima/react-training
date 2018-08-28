@@ -1,4 +1,15 @@
 import { ajax } from "rxjs/ajax";
+import firebase from "firebase";
+
+const config = {
+    apiKey: "AIzaSyBHkwzETMQ7Vt5XAgosfLAJqM98J9dxw-k",
+    authDomain: "exadel-training-react-course.firebaseapp.com",
+    databaseURL: "https://exadel-training-react-course.firebaseio.com",
+    projectId: "exadel-training-react-course",
+    storageBucket: "exadel-training-react-course.appspot.com",
+    messagingSenderId: "1095008325302"
+};
+firebase.initializeApp(config);
 
 // api key
 // FipGdloXqHUVHcSHhtIBnhEmfJ89IvLv
