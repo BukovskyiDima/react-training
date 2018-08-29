@@ -14,6 +14,7 @@ export default class Main extends React.Component {
                         <Route exact path="/" component={Page.Home}/>
                         <Route path="/random" component={Page.Random}/>
                         <Route path="/login" component={Page.Auth}/>
+                        <Route path="/favorite" component={Page.Favorite}/>
                     </Switch>
                 </React.Fragment>
             </ConnectedRouter>

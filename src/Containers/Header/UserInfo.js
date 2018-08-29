@@ -18,14 +18,27 @@ class UserInfo extends React.Component {
                             Log In
                         </NavLink>
                     </li>
-                    : <li>
-                        <a
-                            className={"btn"}
-                            onClick={this.props.logout}
-                        >
-                            Log Out
-                        </a>
-                    </li>
+                    :
+                    <React.Fragment>
+                        <li className="user-info">
+                            <span>{this.props.user.email}</span>
+                            <NavLink
+                                className={"btn"}
+                                activeClassName={"active"}
+                                to="/favorite"
+                            >
+                                Favorite
+                            </NavLink>
+                        </li>
+                        <li>
+                            <a
+                                className={"btn"}
+                                onClick={this.props.logout}
+                            >
+                                Log Out
+                            </a>
+                        </li>
+                    </React.Fragment>
                 }
             </React.Fragment>
         )
@@ -38,7 +51,8 @@ UserInfo.propTypes = {
 
 export default connect(
     (state) => ({
-        loggedIn: state.auth.loggedIn
+        loggedIn: state.auth.loggedIn,
+        user: state.auth.user
     }),
     {
         logout

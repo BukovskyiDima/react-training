@@ -7,8 +7,7 @@ const getGifsEpic = (action$, state$, {api}) => action$.pipe(
     ofType(GIF_REQUEST),
     switchMap(() =>
         api.trending().pipe(
-            map(response => gifRequestSuccess(response.response.data)),
-            // map(response => {throw Error()}),
+            map((response) => gifRequestSuccess(response.response.data)),
             catchError(() => of(gifRequestError('An error!')))
         )
     )
