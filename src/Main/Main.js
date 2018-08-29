@@ -5,7 +5,6 @@ import Header from '../Containers/Header/Header';
 import { ConnectedRouter } from "react-router-redux";
 import AuthRoute from "../Containers/AuthRoute";
 
-
 export default class Main extends React.Component {
     render() {
         return (
@@ -17,6 +16,7 @@ export default class Main extends React.Component {
                         <Route path="/random" component={Page.Random}/>
                         <Route path="/login" component={Page.Auth}/>
                         <AuthRoute path="/favorite" component={Page.Favorite}/>
+                        <Route path="*" component={Page.NotFound}/>
                     </Switch>
                 </React.Fragment>
             </ConnectedRouter>

@@ -9,7 +9,7 @@ class UserInfo extends React.Component {
         return (
             <React.Fragment>
                 {!this.props.loggedIn
-                    ? <li>
+                    ? <li className="user-info">
                         <NavLink
                             className={"btn"}
                             activeClassName={"active"}
@@ -29,7 +29,7 @@ class UserInfo extends React.Component {
                                 Favorite
                             </NavLink>
                         </li>
-                        <li  className="user-info">
+                        <li className="user-info">
                             <span>{this.props.user.email}</span>
                             <a
                                 className={"btn"}
