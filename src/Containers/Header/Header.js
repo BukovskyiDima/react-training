@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { NavLink, withRouter } from "react-router-dom";
 import './Header.scss';
+import UserInfo from "./UserInfo";
 
 class Header extends React.Component {
 
     render() {
-        const { loggedIn } = this.props || false;
-
         return (
             <header id="header">
                 <div className="container">
@@ -36,31 +35,13 @@ class Header extends React.Component {
                             </NavLink>
                         </li>
 
-                        {!loggedIn
-                            ? <li>
-                                <NavLink
-                                    className={"btn"}
-                                    activeClassName={"active"}
-                                    to="/login"
-                                >
-                                    Log In
-                                </NavLink>
-                            </li>
-                            : <li>
-                                <NavLink
-                                    className={"btn"}
-                                    activeClassName={"active"}
-                                    to="/"
-                                >
-                                    Log Out
-                                </NavLink>
-                            </li>
-                        }
+                        <UserInfo />
                     </ul>
                 </div>
             </header>
         )
     }
 }
+
 
 export default withRouter(props => <Header {...props}/>)

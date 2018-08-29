@@ -3,15 +3,17 @@ import './App.scss';
 import Main from './Main';
 import { Provider } from 'react-redux';
 import createStore from './store/index';
+import createHistory from "history/createBrowserHistory";
 
-const store = createStore();
+const history = createHistory();
+const store = createStore(history);
 
 export default class App extends React.Component {
 
     render() {
         return (
             <Provider store={store}>
-                <Main/>
+                <Main history={history}/>
             </Provider>
         );
     }

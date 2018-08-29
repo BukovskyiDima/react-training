@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import connect from "react-redux/es/connect/connect";
 import { login, signup   } from "../Auth/services";
+import './Login.scss';
 
 export class Auth extends Component {
     state = {
@@ -9,9 +10,9 @@ export class Auth extends Component {
         password: ''
     };
 
-    handleFormFieldChange = (field, e) => {
+    handleFormFieldChange = (e) => {
         this.setState({
-            [field]: e.target.value,
+            [e.target.name]: e.target.value,
         });
     };
 
@@ -24,17 +25,21 @@ export class Auth extends Component {
     render(){
         return (
             <div className='container'>
-                <form className='form-holder'>
+                <form className='login-form'>
                     <div className="input-holder">
                         <label htmlFor="email" >E-mail*</label>
-                        <input id="email" type="mail"/>
+                        <input id="email" name="email" type="email" onChange={this.handleFormFieldChange}/>
                     </div>
                     <div className="input-holder">
                         <label htmlFor="password">Password*</label>
-                        <input id="password" type="password"/>
+                        <input id="password" name="password" type="password" onChange={this.handleFormFieldChange}/>
                     </div>
-                    <button>Log In</button>
-                    <button>Sign Up</button>
+                    <div className="input-holder">
+                        <button className="btn login" onClick={this.handleSubmit}>Log In</button>
+                    </div>
+                    <div className="input-holder">
+                        <button className="btn signup">Sign Up</button>
+                    </div>
                 </form>
             </div>
         )

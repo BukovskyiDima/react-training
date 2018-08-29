@@ -1,0 +1,13 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+
+    .input-holder {
+        margin-bottom: 15px;
+
+        .login,
+        .signup {
+            width: 100%;
+        }
+    }
+}

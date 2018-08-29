@@ -1,20 +1,22 @@
-import * as action from "./action";
+import * as AuthActions from "./action";
 import { of } from "rxjs";
-import { catchError, map, switchMap } from "rxjs/operators";
-import { ofType } from "redux-observable";
+import { switchMap } from "rxjs/operators";
+import { combineEpics, ofType } from "redux-observable";
+import { push } from "react-router-redux";
+
 
 const login = (action$, state$, {api}) => action$.pipe(
-    ofType(action.LOGIN.REQUEST),
-    switchMap(() => {
-            const {email, password} = action.login.payload;
+    ofType(AuthActions.LOGIN.REQUEST),
+    switchMap((action) => {
+            const {email, password} = action.payload;
 
-            if(password === '1') {
-                return of(action.loginSuccess({
+            if (password === '1') {
+                return of(AuthActions.loginSuccess({
                     email
-                }));
+                }), push('/'));
             }
 
-            return of(action.loginError({
+            return of(AuthActions.loginError({
                 error: 'login error'
             }))
         }
@@ -22,27 +24,29 @@ const login = (action$, state$, {api}) => action$.pipe(
 );
 
 const logout = (action$, state$, {api}) => action$.pipe(
-    ofType(action.LOGOUT),
+    ofType(AuthActions.LOGOUT),
     switchMap(() => {
-
+            return of(push('/login'));
         }
     )
 );
 
-const signup = (action$, state$, {api}) => action$.pipe(
-    ofType(action.SIGNUP.REQUEST),
-    switchMap(() => {
-            const {email, password} = action.signup.payload;
+// const signup = (action$, state$, {api}) => action$.pipe(
+//     ofType(AuthActions.SIGNUP.REQUEST),
+//     switchMap((action) => {
+//             const {email, password} = action;
+//
+//             if(email !== 'admin@gmail.com') {
+//                 return of(AuthActions.signupSuccess({
+//                     email
+//                 }));
+//             }
+//
+//             return of(AuthActions.signupError({
+//                 error: 'signup error'
+//             }))
+//         }
+//     )
+// );
 
-            if(email !== 'admin@gmail.com') {
-                return of(action.signupSuccess({
-                    email
-                }));
-            }
-
-            return of(action.signupError({
-                error: 'signup error'
-            }))
-        }
-    )
-);
+export default combineEpics(login, logout);
