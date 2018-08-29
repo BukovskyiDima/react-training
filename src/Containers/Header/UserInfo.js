@@ -20,8 +20,7 @@ class UserInfo extends React.Component {
                     </li>
                     :
                     <React.Fragment>
-                        <li className="user-info">
-                            <span>{this.props.user.email}</span>
+                        <li>
                             <NavLink
                                 className={"btn"}
                                 activeClassName={"active"}
@@ -30,7 +29,8 @@ class UserInfo extends React.Component {
                                 Favorite
                             </NavLink>
                         </li>
-                        <li>
+                        <li  className="user-info">
+                            <span>{this.props.user.email}</span>
                             <a
                                 className={"btn"}
                                 onClick={this.props.logout}

@@ -3,6 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import * as Page from './Pages/index';
 import Header from '../Containers/Header/Header';
 import { ConnectedRouter } from "react-router-redux";
+import AuthRoute from "../Containers/AuthRoute";
+
 
 export default class Main extends React.Component {
     render() {
@@ -14,7 +16,7 @@ export default class Main extends React.Component {
                         <Route exact path="/" component={Page.Home}/>
                         <Route path="/random" component={Page.Random}/>
                         <Route path="/login" component={Page.Auth}/>
-                        <Route path="/favorite" component={Page.Favorite}/>
+                        <AuthRoute path="/favorite" component={Page.Favorite}/>
                     </Switch>
                 </React.Fragment>
             </ConnectedRouter>

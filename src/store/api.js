@@ -2,7 +2,7 @@ import { ajax } from "rxjs/ajax";
 import firebase from "firebase";
 
 const config = {
-    apiKey: "AIzaSyBHkwzETMQ7Vt5XAgosfLAJqM98J9dxw-k",
+    apiKey: process.env.API_KEY,
     authDomain: "exadel-training-react-course.firebaseapp.com",
     databaseURL: "https://exadel-training-react-course.firebaseio.com",
     projectId: "exadel-training-react-course",

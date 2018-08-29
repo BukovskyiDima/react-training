@@ -5,14 +5,12 @@ import connect from "react-redux/es/connect/connect";
 export class Favorite extends React.Component {
 
     render() {
-
         return (
-
             <main>
                 <div
                     className="container"
                 >
-                    {/*<GifsHolder items={items}/>*/}
+                    <GifsHolder items={this.props.favorite}/>
                     {/*{error !== '' ? <span className="error">{error}</span> : null}*/}
                 </div>
             </main>
@@ -20,9 +18,8 @@ export class Favorite extends React.Component {
     }
 }
 
-const mapStateToProps = ({auth: {user, error}}) => ({
-    error: error,
-    user: user
+const mapStateToProps = ({favorite}) => ({
+    favorite: Object.values(favorite),
 });
 
 export default connect(

@@ -3,8 +3,18 @@ import PropTypes from 'prop-types';
 import './GifItem.scss';
 import connect from "react-redux/es/connect/connect";
 import {logout} from "../../Main/Pages/Auth/services";
+import { addToFavorite, removeFromFavorite } from "../../Main/Pages/Favorite/services/action";
 
 export class GifItem extends React.Component {
+
+    addToFavorite = () => {
+        this.props.addToFavorite(this.props.item);
+    };
+
+    removeFromFavorite = () => {
+        this.props.removeFromFavorite(this.props.item.id);
+    };
+
     render() {
         const {item} = this.props;
         if (!item) {
@@ -17,9 +27,21 @@ export class GifItem extends React.Component {
                 </video>
                 <div className="button-holder">
                     <span>{item.title.slice(0, item.title.indexOf("GIF")).trim()}</span>
-                    {this.props.loggedIn
-                        ? <a className="btn">add</a>
-                        : <a className="btn">remove</a>
+                    {this.props.loggedIn && (
+                        !this.props.isFavorite
+                        ? <a
+                            className="btn"
+                            onClick={this.addToFavorite}
+                        >
+                            add
+                        </a>
+                        : <a
+                            className="btn"
+                            onClick={this.removeFromFavorite}
+                        >
+                            remove
+                        </a>
+                        )
                     }
                 </div>
             </div>
@@ -32,10 +54,13 @@ GifItem.propTypes = {
 };
 
 export default connect(
-    (state) => ({
-        loggedIn: state.auth.loggedIn
+    (state, ownProps) => ({
+        loggedIn: state.auth.loggedIn,
+        isFavorite: !!state.favorite[ownProps.item.id]
     }),
     {
-        logout
+        logout,
+        removeFromFavorite,
+        addToFavorite
     }
 )(GifItem);
