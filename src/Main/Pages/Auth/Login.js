@@ -22,6 +22,10 @@ export class Auth extends Component {
         this.props.login(this.state.email, this.state.password);
     };
 
+    handleSignUp = () => {
+        // this.props.signup(this.state.email, this.state.password);
+    };
+
     render(){
         return (
             <div className='container'>
@@ -38,7 +42,7 @@ export class Auth extends Component {
                         <button className="btn login" onClick={this.handleSubmit}>Log In</button>
                     </div>
                     <div className="input-holder">
-                        <button className="btn signup">Sign Up</button>
+                        <button type="button" className="btn signup"  onClick={this.handleSignUp}>Sign Up</button>
                     </div>
                 </form>
             </div>

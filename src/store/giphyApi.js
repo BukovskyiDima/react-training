@@ -1,24 +1,13 @@
 import { ajax } from "rxjs/ajax";
-import firebase from "firebase";
-
-const config = {
-    apiKey: process.env.API_KEY,
-    authDomain: "exadel-training-react-course.firebaseapp.com",
-    databaseURL: "https://exadel-training-react-course.firebaseio.com",
-    projectId: "exadel-training-react-course",
-    storageBucket: "exadel-training-react-course.appspot.com",
-    messagingSenderId: "1095008325302"
-};
-firebase.initializeApp(config);
 
 // api key
 // FipGdloXqHUVHcSHhtIBnhEmfJ89IvLv
 // zW3QkmvOf9ivEjRrXElFxe0C4KFd3zfO
 
-const API_KEY = 'FipGdloXqHUVHcSHhtIBnhEmfJ89IvLv';
+const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
 const URL = 'https://api.giphy.com/v1/gifs';
 
-const api = {
+const giphyApi = {
 
     trending: () => {
         return ajax({
@@ -43,4 +32,4 @@ const api = {
     },
 };
 
-export default api;
+export default giphyApi;

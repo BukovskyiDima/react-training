@@ -5,10 +5,13 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { homeEpic } from '../Main/Pages/Home/services/';
 import { randomEpic } from '../Main/Pages/Random/services';
 import { authEpic } from '../Main/Pages/Auth/services';
-import api from './api';
+import giphyApi from './giphyApi';
+import firebaseApi from './firebaseApi';
 import { routerMiddleware } from "react-router-redux";
 
 export default function (history) {
+
+    firebaseApi.initialize();
 
     const appEpic = combineEpics(
         homeEpic,
@@ -18,7 +21,7 @@ export default function (history) {
 
     const epicMiddleware = createEpicMiddleware({
         dependencies: {
-            api
+            api: { ...giphyApi, ...firebaseApi },
         }
     });
 
