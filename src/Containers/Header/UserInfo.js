@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import * as PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../Main/Pages/Auth/services";
@@ -9,7 +9,7 @@ class UserInfo extends React.Component {
         return (
             <React.Fragment>
                 {!this.props.loggedIn
-                    ? <li className="user-info">
+                    ? <li className="user-info" >
                         <NavLink
                             className={"btn"}
                             activeClassName={"active"}

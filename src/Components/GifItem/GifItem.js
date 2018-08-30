@@ -7,12 +7,13 @@ import { addToFavorite, removeFromFavorite } from "../../Main/Pages/Favorite/ser
 
 export class GifItem extends React.Component {
 
-    addToFavorite = () => {
-        this.props.addToFavorite(this.props.item);
-    };
+    toggleFavorite = (e) => {
+        const { item, addToFavorite, removeFromFavorite } = this.props;
+        const value = e.target.checked;
 
-    removeFromFavorite = () => {
-        this.props.removeFromFavorite(this.props.item.id);
+        value
+            ? addToFavorite(item)
+            : removeFromFavorite(item.id);
     };
 
     render() {
@@ -22,22 +23,16 @@ export class GifItem extends React.Component {
         }
         return (
             <div className="item">
-                <video controls="controls" loop="loop">
+                <video controls loop="loop">
                     <source src={item.images.original.mp4} type="video/mp4"/>
                 </video>
                 <div className="button-holder">
                     <span>{item.title.slice(0, item.title.indexOf("GIF")).trim()}</span>
                     {this.props.loggedIn &&
-                        (!this.props.isFavorite
-                            ? <label className="checkbox-holder">
-                                <input type="checkbox" onChange={this.addToFavorite}/>
-                                <span className="checkmark"> </span>
-                            </label>
-                            : <label className="checkbox-holder">
-                                <input type="checkbox" checked onChange={this.removeFromFavorite}/>
-                                <span className="checkmark"> </span>
-                            </label>
-                        )
+                        <label className="checkbox-holder">
+                            <input type="checkbox" checked={this.props.isFavorite} onChange={this.toggleFavorite}/>
+                            <span className="checkmark"> </span>
+                        </label>
                     }
                 </div>
             </div>
@@ -52,7 +47,7 @@ GifItem.propTypes = {
 export default connect(
     (state, ownProps) => ({
         loggedIn: state.auth.loggedIn,
-        isFavorite: !!state.favorite[ownProps.item.id]
+        isFavorite: !!state.favorite.items[ownProps.item.id]
     }),
     {
         logout,

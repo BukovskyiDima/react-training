@@ -23,7 +23,7 @@ export class Auth extends Component {
     };
 
     handleSignUp = () => {
-        // this.props.signup(this.state.email, this.state.password);
+        this.props.signup(this.state.email, this.state.password);
     };
 
     render(){
@@ -51,7 +51,8 @@ export class Auth extends Component {
 }
 
 Auth.propTypes = {
-
+    login: PropTypes.func,
+    signup: PropTypes.func
 };
 
 const mapStateToProps = ({}) => ({

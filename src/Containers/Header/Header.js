@@ -40,13 +40,12 @@ class Header extends React.Component {
                             </NavLink>
                         </li>
 
-                        <UserInfo />
+                        <UserInfo location={this.props.location}/>
                     </ul>
                 </div>
             </header>
         )
     }
 }
-
 
 export default withRouter(props => <Header {...props}/>)

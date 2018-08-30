@@ -2,7 +2,8 @@ import * as AuthActions from "./action";
 import { of } from "rxjs";
 import { catchError, map, switchMap, tap, delay, take } from "rxjs/operators";
 import { combineEpics, ofType } from "redux-observable";
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
+import { getFavorites } from '../../Favorite/services/action';
 
 const login = (action$, state$, {api}) => action$.pipe(
     ofType(AuthActions.LOGIN.REQUEST),
@@ -13,7 +14,7 @@ const login = (action$, state$, {api}) => action$.pipe(
             switchMap((res) => of(AuthActions.loginSuccess({
                 email: res.user.email,
                 uid: res.user.uid
-            }), push('./'))),
+            }), getFavorites(), push('./'))),
             catchError((error) => of(AuthActions.loginError(error.message)))
         )
     })
@@ -27,24 +28,18 @@ const logout = (action$, state$, {api}) => action$.pipe(
     )
 );
 
-// const signup = (action$, state$, {api}) => action$.pipe(
-//     ofType(AuthActions.SIGNUP.REQUEST),
-//     // switchMap((action) => {
-//     //     const {email, password} = action.payload;
-//     //
-//     //     return api.signUp(email, password)
-//     // })
-//     delay(5000),
-//     tap(action => {
-//         console.log('hi');
-//         const {email, password} = action.payload;
-//         api.signUp(email, password).pipe(
-//             catchError((error) => {
-//                 console.log(error);
-//             })
-//         )
-//     }),
-//     take(1)
-// );
-
-export default combineEpics(login, logout);
+const signup = (action$, state$, {api}) => action$.pipe(
+    ofType(AuthActions.SIGNUP.REQUEST),
+    switchMap(action => {
+        const {email, password} = action.payload;
+        return api.signUp(email, password).pipe(
+            switchMap(() => of(AuthActions.login(email, password))),
+            catchError(({code, message}) => {
+                return code !== 'auth/email-already-in-use'
+                    ? of(AuthActions.signupError(message))
+                    : of(AuthActions.login(email, password))
+            })
+        )}
+    )
+);
+export default combineEpics(login, logout, signup);

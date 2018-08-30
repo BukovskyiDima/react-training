@@ -1,25 +1,59 @@
 import {
     ADD_TO_FAVORITE,
-    REMOVE_FROM_FAVORITE
+    REMOVE_FROM_FAVORITE,
+    GET_FAVORITE
 } from "./action";
 
 const defaultState =  {
-
+    items: {},
+    isFetching: false,
+    error: null
 };
 
 export const favoriteReducer = (state = defaultState, action) => {
+
+    const items = state.items;
+
     switch(action.type) {
         case ADD_TO_FAVORITE: {
             return {
                 ...state,
-                [action.favoriteItem.id]: action.favoriteItem
+                items: {
+                    ...items,
+                    [action.favoriteItem.id]: action.favoriteItem
+                }
             }
         }
 
         case REMOVE_FROM_FAVORITE: {
-            delete state[action.id];
+            delete items[action.id];
             return {
-                ...state
+                ...state,
+                items: {
+                    ...items
+                }
+            }
+        }
+
+        case GET_FAVORITE.REQUEST: {
+            return {
+                ...state,
+                isFetching: true
+            }
+        }
+
+        case GET_FAVORITE.SUCCESS: {
+            return {
+                ...state,
+                items: action.items || {},
+                isFetching: false
+            }
+        }
+
+        case GET_FAVORITE.FAILURE: {
+            return {
+                ...state,
+                error: action.error
             }
         }
 
