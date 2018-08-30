@@ -13,7 +13,7 @@ const login = (action$, state$, {api}) => action$.pipe(
             switchMap((res) => of(AuthActions.loginSuccess({
                 email: res.user.email,
                 uid: res.user.uid
-            })), push('/')),
+            }), push('./'))),
             catchError((error) => of(AuthActions.loginError(error.message)))
         )
     })
@@ -21,7 +21,7 @@ const login = (action$, state$, {api}) => action$.pipe(
 
 const logout = (action$, state$, {api}) => action$.pipe(
     ofType(AuthActions.LOGOUT),
-    switchMap((action) => api.logOut().pipe(
+    switchMap(() => api.logOut().pipe(
             map(() => push('/login'))
         )
     )

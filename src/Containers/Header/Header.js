@@ -5,6 +5,10 @@ import UserInfo from "./UserInfo";
 
 class Header extends React.Component {
 
+    handleBurger = () => {
+        document.querySelector('body').classList.toggle('nav-active');
+    };
+
     render() {
         return (
             <header id="header">
@@ -14,6 +18,7 @@ class Header extends React.Component {
                             <img src="./images/logo.png" alt="react-training"/>
                         </a>
                     </strong>
+                    <a onClick={this.handleBurger} className="nav-opener"><span> </span></a>
                     <ul className="button-holder">
                         <li>
                             <NavLink
