@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import './GifItem.scss';
 import connect from "react-redux/es/connect/connect";
-import {logout} from "../../Main/Pages/Auth/services";
+import { logout } from "../../Main/Pages/Auth/services";
 import { addToFavorite, removeFromFavorite } from "../../Main/Pages/Favorite/services/action";
 
 export class GifItem extends React.Component {
@@ -27,20 +27,16 @@ export class GifItem extends React.Component {
                 </video>
                 <div className="button-holder">
                     <span>{item.title.slice(0, item.title.indexOf("GIF")).trim()}</span>
-                    {this.props.loggedIn && (
-                        !this.props.isFavorite
-                        ? <a
-                            className="btn"
-                            onClick={this.addToFavorite}
-                        >
-                            add
-                        </a>
-                        : <a
-                            className="btn"
-                            onClick={this.removeFromFavorite}
-                        >
-                            remove
-                        </a>
+                    {this.props.loggedIn &&
+                        (!this.props.isFavorite
+                            ? <label className="checkbox-holder">
+                                <input type="checkbox" onChange={this.addToFavorite}/>
+                                <span className="checkmark"> </span>
+                            </label>
+                            : <label className="checkbox-holder">
+                                <input type="checkbox" checked onChange={this.removeFromFavorite}/>
+                                <span className="checkmark"> </span>
+                            </label>
                         )
                     }
                 </div>

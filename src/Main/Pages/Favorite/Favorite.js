@@ -8,7 +8,7 @@ export class Favorite extends React.Component {
         return (
             <main>
                 <div
-                    className="container"
+                    className="container favorite"
                 >
                     <GifsHolder items={this.props.favorite}/>
                     {/*{error !== '' ? <span className="error">{error}</span> : null}*/}
