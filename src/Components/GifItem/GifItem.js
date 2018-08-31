@@ -2,7 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import './GifItem.scss';
 import connect from "react-redux/es/connect/connect";
-import { logout } from "../../Main/Pages/Auth/services";
 import { addToFavorite, removeFromFavorite } from "../../Main/Pages/Favorite/services/action";
 
 export class GifItem extends React.Component {
@@ -50,7 +49,6 @@ export default connect(
         isFavorite: !!state.favorite.items[ownProps.item.id]
     }),
     {
-        logout,
         removeFromFavorite,
         addToFavorite
     }
