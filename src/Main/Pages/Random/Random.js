@@ -2,6 +2,7 @@ import * as React from 'react';
 import { GifsHolder } from '../../../Components/index'
 import { connect } from "react-redux";
 import { randomGifRequest } from "./services";
+import PropTypes from 'prop-types';
 
 export class Random extends React.Component {
 
@@ -32,8 +33,18 @@ export class Random extends React.Component {
     }
 }
 
+Random.protoType = {
+    items: PropTypes.object,
+    getRandomGif: PropTypes.func
+};
+
 const mapStateToProps = ({random: {items}}) => ({
     items: items
 });
 
-export default connect(mapStateToProps, {getRandomGif: randomGifRequest})(Random);
+export default connect(
+    mapStateToProps,
+    {
+        getRandomGif: randomGifRequest
+    }
+)(Random);

@@ -10,6 +10,9 @@ class Header extends React.Component {
     };
 
     render() {
+
+        const {location} = this.props;
+
         return (
             <header id="header">
                 <div className="container">
@@ -39,8 +42,7 @@ class Header extends React.Component {
                                 Random
                             </NavLink>
                         </li>
-
-                        <UserInfo location={this.props.location}/>
+                        <UserInfo location={location}/>
                     </ul>
                 </div>
             </header>

@@ -1,8 +1,4 @@
-import {
-    LOGIN,
-    SIGNUP,
-    LOGOUT
-} from "./action";
+import { LOGIN, LOGOUT, SIGNUP } from "./action";
 
 const defaultState = {
     user: null,
@@ -12,14 +8,14 @@ const defaultState = {
 };
 
 export const authReducer = (state = defaultState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case LOGIN.REQUEST:
         case SIGNUP.REQUEST: {
             return {
-                    ...state,
-                    loading: true
-                }
+                ...state,
+                loading: true
             }
+        }
 
         case LOGIN.SUCCESS:
         case SIGNUP.SUCCESS: {
@@ -50,6 +46,7 @@ export const authReducer = (state = defaultState, action) => {
             }
         }
 
-        default: return state;
+        default:
+            return state;
     }
 };

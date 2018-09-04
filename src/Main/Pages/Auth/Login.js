@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import connect from "react-redux/es/connect/connect";
-import { login, signup   } from "../Auth/services";
+import { login, signup } from "../Auth/services";
 import './Login.scss';
 
 export class Auth extends Component {
@@ -26,12 +26,12 @@ export class Auth extends Component {
         this.props.signup(this.state.email, this.state.password);
     };
 
-    render(){
+    render() {
         return (
             <div className='container'>
                 <form className='login-form'>
                     <div className="input-holder">
-                        <label htmlFor="email" >E-mail*</label>
+                        <label htmlFor="email">E-mail*</label>
                         <input id="email" name="email" type="email" onChange={this.handleFormFieldChange}/>
                     </div>
                     <div className="input-holder">
@@ -42,7 +42,7 @@ export class Auth extends Component {
                         <button className="btn login" onClick={this.handleSubmit}>Log In</button>
                     </div>
                     <div className="input-holder">
-                        <button type="button" className="btn signup"  onClick={this.handleSignUp}>Sign Up</button>
+                        <button type="button" className="btn signup" onClick={this.handleSignUp}>Sign Up</button>
                     </div>
                 </form>
             </div>
@@ -55,8 +55,7 @@ Auth.propTypes = {
     signup: PropTypes.func
 };
 
-const mapStateToProps = ({}) => ({
-});
+const mapStateToProps = ({}) => ({});
 
 export default connect(
     mapStateToProps,

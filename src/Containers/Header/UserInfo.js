@@ -1,14 +1,16 @@
 import * as React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import * as PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../Main/Pages/Auth/services";
 
 class UserInfo extends React.Component {
     render() {
+        const {loggedIn, user, logout} =  this.props;
+
         return (
             <React.Fragment>
-                {!this.props.loggedIn
+                {!loggedIn
                     ? <li className="user-info" >
                         <NavLink
                             className={"btn"}
@@ -30,10 +32,10 @@ class UserInfo extends React.Component {
                             </NavLink>
                         </li>
                         <li className="user-info">
-                            <span>{this.props.user.email}</span>
+                            <span>{user.email}</span>
                             <a
                                 className={"btn"}
-                                onClick={this.props.logout}
+                                onClick={logout}
                             >
                                 Log Out
                             </a>
@@ -46,7 +48,9 @@ class UserInfo extends React.Component {
 }
 
 UserInfo.propTypes = {
-    loggedIn: PropTypes.bool
+    loggedIn: PropTypes.bool,
+    user: PropTypes.object,
+    logout: PropTypes.func
 };
 
 export default connect(

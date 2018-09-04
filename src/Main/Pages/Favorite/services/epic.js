@@ -37,4 +37,4 @@ const getFavoriteItem = (action$, state$, {api}) => action$.pipe(
     ))
 );
 
-export default combineEpics(addFavorite, removeFavorite, getFavoriteItem, removeFavorite);
+export default combineEpics(addFavorite, removeFavorite, getFavoriteItem);

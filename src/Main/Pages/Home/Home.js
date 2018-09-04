@@ -72,14 +72,17 @@ Home.propTypes = {
     items: PropTypes.array,
     query: PropTypes.string,
     isFetching: PropTypes.bool,
-    error: PropTypes.string
+    error: PropTypes.string,
+    gifSearchRequest: PropTypes.func,
+    gifRequest: PropTypes.func,
+    handleSearchRequestQuery: PropTypes.func
 };
 
 const mapStateToProps = ({home: {items, query, isFetching, error}}) => ({
     items: items,
     query: query,
     isFetching: isFetching,
-    error: error
+    error: error,
 });
 
 export default connect(
@@ -87,6 +90,6 @@ export default connect(
     {
         gifRequest: getGif,
         gifSearchRequest: getGifByQuery,
-        handleSearchRequestQuery
+        handleSearchRequestQuery: handleSearchRequestQuery,
     }
 )(Home);
